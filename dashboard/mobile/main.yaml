@@ -10,9 +10,9 @@ cards:
         cards:
           - type: "custom:button-card"
             template: card_person_custom
-            entity: person.bas_brussee
+            entity: !secret person_bas
             variables:
-              ulm_card_person_entity: person.bas_brussee
+              ulm_card_person_entity: !secret person_bas
               ulm_card_person_use_entity_picture: true
               ulm_card_person_zone1: zone.werk
               ulm_card_person_zone2: zone.school
@@ -295,7 +295,7 @@ cards:
       - type: horizontal-stack
         cards:
           - type: custom:mini-media-player
-            entity: media_player.spotify_bas_brussee
+            entity: !secret spotify_bas
             artwork: material
             info: scroll
             icon: mdi:spotify
