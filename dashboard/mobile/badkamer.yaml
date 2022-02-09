@@ -1,0 +1,95 @@
+title: Badkamer
+path: Badkamer
+icon: mdi:shower
+cards:
+  - type: vertical-stack
+    cards:
+      - !include "bar/chip_bar_top_back.yaml"
+      - !include "bar/chip_bar_under.yaml"
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_title
+            name: Badkamer
+            entity: light.badkamer_lampen
+            variables:
+              count_sensor: sensor.lights_on_badkamer
+            label: >
+              [[[
+                if (entity.state == 'on'){
+                  if (states[variables.count_sensor].state != '1'){
+                    return states[variables.count_sensor].state + ' lampen aan';
+                  } else if (states[variables.count_sensor].state == '1'){
+                    return states[variables.count_sensor].state + ' lamp aan';
+                  }
+                } else {
+                  return 'Geen lampen aan'
+                }
+              ]]]
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: custom_card_mpse_thermostat
+            entity: climate.badkamer
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_graph
+            variables:
+              ulm_card_graph_color: "var(--google-yellow)"
+              ulm_card_graph_name: Temperatuur Badkamer
+              ulm_card_graph_entity: sensor.temperature_badkamer
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+          - type: "custom:button-card"
+            template: card_graph
+            variables:
+              ulm_card_graph_color: "var(--google-blue)"
+              ulm_card_graph_name: Luchtvochtigheid Badkamer
+              ulm_card_graph_entity: sensor.humidity_badkamer
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template:
+              - card_binary_sensor
+              - popup_power_outlet
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_popup_power_outlet_sensor1: binary_sensor.motion_sensor_badkamer_1
+              ulm_popup_power_outlet_sensor2: sensor.lightlevel_badkamer_1
+              ulm_popup_power_outlet_graph_sensor: sensor.lightlevel_badkamer_1
+            entity: binary_sensor.motion_sensor_badkamer_1
+            show_last_changed: true
+          - type: "custom:button-card"
+            template:
+              - card_binary_sensor
+              - popup_power_outlet
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_popup_power_outlet_sensor1: binary_sensor.motion_sensor_badkamer_2
+              ulm_popup_power_outlet_sensor2: sensor.lightlevel_badkamer_2
+              ulm_popup_power_outlet_graph_sensor: sensor.lightlevel_badkamer_2
+            entity: binary_sensor.motion_sensor_badkamer_2
+            show_last_changed: true
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_light
+            variables:
+              ulm_card_light_name: Badkamer
+              ulm_card_light_icon: phu:ceiling-being
+              ulm_card_light_enable_popup: true
+            entity: switch.badkamer
+          - type: "custom:button-card"
+            template:
+              - card_power_outlet
+              - popup_power_outlet
+            variables:
+              ulm_card_power_outlet_consumption_sensor: sensor.wasmachine_current_consumption
+              ulm_popup_power_outlet_sensor1: sensor.wasmachine_current_consumption
+              ulm_popup_power_outlet_sensor2: sensor.wasmachine_total_consumption
+              ulm_popup_power_outlet_graph_sensor: sensor.wasmachine_current_consumption
+            entity: input_boolean.wasmachine_status
+            name: Wasmachine

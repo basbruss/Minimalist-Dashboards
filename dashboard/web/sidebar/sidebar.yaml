@@ -1,0 +1,184 @@
+type: vertical-stack
+view_layout:
+  position: sidebar
+cards:
+  - type: 'custom:button-card'
+    template: custom_card_paddy_welcome_with_weather
+    variables:
+      ulm_custom_card_paddy_welcome_time: sensor.time
+      ulm_custom_card_paddy_welcome_weather_provider: weather.buienradar
+  - type: custom:mini-media-player
+    entity: media_player.spotify_bas_brussee
+    artwork: material
+    info: scroll
+    icon: mdi:spotify
+    source: full
+    style: |
+        :host {
+          --ha-card-border-radius: var(--border-radius);
+          --ha-card-box-shadow: var(--box-shadow);
+          }
+    hide:
+      play_pause: false
+      play_stop: true
+      artwork_cover: false
+      shuffle: false
+    idle_view:
+      when_paused: true
+      when_idle: true
+  - type: custom:mini-media-player
+    entity: media_player.versterker
+    artwork: material
+    info: scroll
+    icon: mdi:audio-video
+    source: scroll
+    style: |
+        :host {
+          --ha-card-border-radius: var(--border-radius);
+          --ha-card-box-shadow: var(--box-shadow);
+          }
+    hide:
+      play_pause: true
+      play_stop: false
+      artwork_cover: false
+    idle_view:
+      when_paused: true
+      when_idle: true
+  - type: conditional
+    conditions:
+      - entity: media_player.home_theater
+        state: 'on'
+    card:    
+      type: custom:mini-media-player
+      entity: media_player.home_theater
+      artwork: material
+      info: scroll
+      icon: mdi:audio-video
+      sound_mode: full
+      source: icon
+      style: |
+        :host {
+          --ha-card-border-radius: var(--border-radius);
+          --ha-card-box-shadow: var(--box-shadow);
+          }
+      hide:
+        source: true
+        sound_mode: false
+        controls: true
+  - type: conditional
+    conditions:
+      - entity: media_player.slaapkamer_speaker
+        state: playing
+    card:    
+      type: custom:mini-media-player
+      entity: media_player.slaapkamer_speaker
+      icon: mdi:speaker-wireless
+      info: scroll
+      artwork: material
+      style: |
+        :host {
+          --ha-card-border-radius: var(--border-radius);
+          --ha-card-box-shadow: var(--box-shadow);
+          }
+      hide:
+        play_pause: true
+        play_stop: false
+      speaker_group:
+        expanded: false
+        platform: heos
+        show_group_count: true
+        entities:
+          - entity_id: media_player.versterker
+            name: Woonkamer
+          - entity_id: media_player.keuken_speaker
+            name: Keuken
+          - entity_id: media_player.slaapkamer_speaker
+            name: Slaapkamer
+  - type: conditional
+    conditions:
+      - entity: media_player.keuken_speaker
+        state: playing
+    card:    
+      type: custom:mini-media-player
+      entity: media_player.keuken_speaker
+      icon: mdi:speaker-wireless
+      artwork: material
+      info: scroll
+      style: |
+        :host {
+          --ha-card-border-radius: var(--border-radius);
+          --ha-card-box-shadow: var(--box-shadow);
+          }
+      hide:
+        play_pause: true
+        play_stop: false
+      speaker_group:
+        expanded: false
+        platform: heos
+        show_group_count: true
+        entities:
+          - entity_id: media_player.versterker
+            name: Woonkamer
+          - entity_id: media_player.keuken_speaker
+            name: Keuken
+          - entity_id: media_player.slaapkamer_speaker
+            name: Slaapkamer
+  - type: custom:vacuum-card
+    entity: vacuum.mova
+    image: default
+    compact_view: false
+    style: |
+      :host .preview {
+        background: var(--card-background-color);
+      }
+      .preview .status-text {
+        color: var(--primary-text-color);
+      }
+      .preview .header {
+        color: var(--primary-text-color);
+      }
+      .preview .vacuum-name {
+        color: var(--primary-text-color);
+      }
+      .preview .stats {
+        color: var(--primary-text-color);
+        border-top: 1px solid var(--disabled-text-color);
+      }
+      .preview .stats .stats-block {
+        border-right: 1px solid var(--disabled-text-color);
+      }
+      :host ha-icon {
+        color: var(--primary-text-color);
+      }
+    stats:
+      default:
+        - attribute: side_brush_time_left
+          unit: hours
+          subtitle: Zijborstel
+        - attribute: filter_time_left
+          unit: hours
+          subtitle: Filter
+        - attribute: main_brush_time_left
+          unit: hours
+          subtitle: Borstel
+        - attribute: waterbox
+          subtitle: Watertank
+      cleaning:
+        - attribute: cleaning_area
+          unit: M2
+          subtitle: Area
+        - attribute: cleaning_time
+          unit: min
+          subtitle: Time
+        - attribute: waterbox
+          subtitle: Watertank
+    shortcuts:
+      - name: Clean Living
+        service: script.vacuum_living
+        icon: mdi:sofa-outline
+      - name: Clean Kitchen
+        icon: mdi:stove
+        service: script.vacuum_kitchen
+      - name: Clean House
+        icon: mdi:home-floor-1
+        service: script.vacuum_home

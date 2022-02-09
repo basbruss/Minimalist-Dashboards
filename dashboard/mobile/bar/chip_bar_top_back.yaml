@@ -1,0 +1,38 @@
+type: custom:swipe-card
+parameters:
+  spaceBetween: 6
+cards:
+  - type: custom:button-card
+    template: chip_back
+    variables:
+      ulm_chip_back_path: "0"
+  - type: custom:button-card
+    template: chip_temperature_color
+    variables:
+      ulm_chip_temperature_inside: sensor.woonkamer_temperature
+      ulm_chip_temperature_outside: sensor.openweathermap_temperature
+      ulm_chip_temperature_weather: weather.openweathermap
+  - type: "custom:button-card"
+    template: chip_presence_detection_color
+    entity: input_boolean.home_mode
+    variables:
+      ulm_chip_presence_counter_residents: sensor.people_count_present
+  - type: "custom:button-card"
+    template: chip_icon_state_color_mdi
+    variables:
+      ulm_chip_icon_state_icon: null
+      ulm_chip_icon_state_entity: sensor.lights_on
+    icon: "mdi:lightbulb-group"
+    entity: light.all_lights
+    color: auto
+    tap_action:
+      action: navigate
+      navigation_path: lights
+      haptic: light
+  - type: "custom:button-card"
+    template: chip_spotify
+    entity: media_player.spotify_bas_brussee
+    variables:
+      ulm_chip_icon_double_state_icon: "📻"
+      ulm_chip_icon_double_state_entity_1: sensor.spotify_song
+      ulm_chip_icon_double_state_entity_2: sensor.spotify_artist

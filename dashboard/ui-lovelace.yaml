@@ -1,0 +1,11 @@
+---
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+
+title: "UI Lovelace Minimalist"
+theme: "minimalist-desktop"
+views:
+  - !include "web/main.yaml"
+  - !include "web/lights.yaml"
+  - !include "web/woonkamer.yaml"
+  - !include "web/slaapkamer.yaml"
+  - !include "web/badkamer.yaml"

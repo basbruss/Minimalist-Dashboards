@@ -1,0 +1,29 @@
+title: "netwerk"
+path: "netwerk"
+icon: "mdi:network-outline"
+cards:
+  - type: vertical-stack
+    cards:
+      - !include "bar/chip_bar_top_back.yaml"
+      - !include "bar/chip_bar_under.yaml"
+      - type: custom:button-card
+        template: custom_card_irmajavi_speedtest
+        variables:
+          ulm_custom_card_irmajavi_speedtest_color: "blue"
+          ulm_custom_card_irmajavi_speedtest_router_name: "TP-Link"
+          ulm_custom_card_irmajavi_speedtest_router_model: "EAP-245"
+          ulm_custom_card_irmajavi_speedtest_download_speed_entity: sensor.speedtest_download
+          ulm_custom_card_irmajavi_speedtest_upload_speed_entity: sensor.speedtest_upload
+      - type: custom:button-card
+        template: custom_card_irmajavi_entities
+        variables:
+          ulm_custom_card_irmajavi_entities_entity_1: sensor.processor_use
+          ulm_custom_card_irmajavi_entities_entity_2: sensor.cpu_temp
+          ulm_custom_card_irmajavi_entities_entity_3: sensor.disk_use_percent_home
+          ulm_custom_card_irmajavi_entities_entity_4: sensor.memory_use_percent
+          ulm_custom_card_irmajavi_entities_name_1: CPU Usage
+          ulm_custom_card_irmajavi_entities_name_2: CPU Temperatuur
+          ulm_custom_card_irmajavi_entities_name_3: Disk Usage
+          ulm_custom_card_irmajavi_entities_name_4: Ram Usage
+          ulm_custom_card_irmajavi_entities_name: Rpi4 Status
+          ulm_custom_card_irmajavi_entities: sensor.processor_use

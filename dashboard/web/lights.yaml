@@ -1,0 +1,310 @@
+title: lights
+path: lights
+icon: 'mdi:lightbulb-group-outline'
+type: sidebar
+theme: minimalist-desktop 
+cards:
+  - !include "sidebar/sidebar.yaml"
+  - type: vertical-stack
+    view_layout:
+      position: main
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: chip_back
+            variables:
+              ulm_chip_back_path: '0'
+          - type: 'custom:button-card'
+            template: chip_icon_state_color_mdi
+            variables:
+              ulm_chip_icon_state_icon: null
+              ulm_chip_icon_state_entity: sensor.lights_on
+            icon: 'mdi:lightbulb-group'
+            entity: light.all_lights
+            color: auto
+          - type: custom:button-card
+            template: chip_temperature_color
+            variables:
+              ulm_chip_temperature_inside: sensor.woonkamer_temperature
+              ulm_chip_temperature_outside: sensor.openweathermap_temperature
+              ulm_chip_temperature_weather: weather.openweathermap
+          - type: 'custom:button-card'
+            template: chip_presence_detection_color
+            entity: input_boolean.home_mode
+            variables:
+              ulm_chip_presence_counter_residents: sensor.people_count_present
+          - type: 'custom:button-card'
+            template: chip_spotify
+            entity: media_player.spotify_bas_brussee
+            variables:
+              ulm_chip_icon_double_state_icon: '📻'
+              ulm_chip_icon_double_state_entity_1: sensor.spotify_song
+              ulm_chip_icon_double_state_entity_2: sensor.spotify_artist
+          - type: 'custom:button-card'
+            template: chip_icon_state_color_mdi
+            entity: group.denon
+            variables: 
+              ulm_chip_icon_state_icon: null
+              ulm_chip_icon_state_entity: sensor.denon_count
+            icon: mdi:speaker-wireless
+          - type: 'custom:button-card'
+            template: chip_tado
+            entity: group.tado
+            icon: si:tado
+          - type: 'custom:button-card'
+            template: chip_vacuum
+            entity: automation.auto_vacuum
+          - type: 'custom:button-card'
+            template: chip_icon_only_color
+            entity: input_boolean.night_mode
+            variables:
+              ulm_chip_icon_only: null # set the variable to null
+            icon: mdi:weather-night # add your icon
+            label: null
+          - type: 'custom:button-card'
+            template: chip_icon_only_color
+            entity: switch.adguard_protection
+            variables:
+              ulm_chip_icon_only: null # set the variable to null
+            icon: mdi:shield-check # add your icon
+            label: null
+          - type: 'custom:button-card'
+            template: chip_icon_state_color_mdi
+            entity: input_boolean.wasmachine_status
+            variables: 
+              ulm_chip_icon_state_icon: null
+              ulm_chip_icon_state_entity: sensor.wasmachine_live
+          - type: 'custom:button-card'
+            template: chip_icon_state_color_mdi
+            entity: input_boolean.vaatwasser_status
+            variables: 
+              ulm_chip_icon_state_icon: null
+              ulm_chip_icon_state_entity: sensor.vaatwasser_live
+      - type: 'custom:button-card'
+        template: card_title
+        name: Lampen
+        entity: light.all_lights
+        variables:
+          count_sensor: sensor.lights_on
+        label: >
+          [[[
+            if (entity.state == 'on'){
+              if (states[variables.count_sensor].state != '1'){
+                return states[variables.count_sensor].state + ' lampen aan';
+              } else if (states[variables.count_sensor].state == '1'){
+                return states[variables.count_sensor].state + ' lamp aan';
+              }
+            } else {
+              return 'Geen lampen aan'
+            }
+          ]]]
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            template: vertical_buttons_yellow_custom
+            entity: light.living_all
+            name: Woonkamer
+            variables:
+              ulm_button_yellow_icon_on: mdi:sofa-outline
+              ulm_button_yellow_icon_off: mdi:sofa-outline
+          - type: 'custom:button-card'
+            template: vertical_buttons_yellow_custom
+            entity: light.keuken_all
+            name: Keuken
+            variables:
+              ulm_button_yellow_icon_on: mdi:stove
+              ulm_button_yellow_icon_off: mdi:stove
+          - type: 'custom:button-card'
+            template: vertical_buttons_yellow_custom
+            entity: light.slaapkamer_all
+            name: Slaapkamer
+            variables:
+              ulm_button_yellow_icon_on: mdi:bed-outline
+              ulm_button_yellow_icon_off: mdi:bed-outline
+          - type: 'custom:button-card'
+            template: vertical_buttons_yellow_custom
+            entity: switch.badkamer
+            name: Badkamer
+            variables:
+              ulm_button_yellow_icon_on: mdi:shower
+              ulm_button_yellow_icon_off: mdi:shower
+      - type: 'custom:button-card'
+        template: card_title
+        name: Woonkamer
+        entity: light.living_all
+        variables:
+          count_sensor: sensor.lights_on_living
+        label: >
+          [[[
+            if (entity.state == 'on'){
+              if (states[variables.count_sensor].state != '1'){
+                return states[variables.count_sensor].state + ' lampen aan';
+              } else if (states[variables.count_sensor].state == '1'){
+                return states[variables.count_sensor].state + ' lamp aan';
+              }
+            } else {
+              return 'Geen lampen aan'
+            }
+          ]]]
+      - type: horizontal-stack
+        cards: 
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Spots 
+              ulm_card_light_icon: phu:double-spot
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.spots_all
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Eettafel
+              ulm_card_light_icon: phu:bulbs-filament
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.eettafel
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Ledstrip
+              ulm_card_light_icon: phu:light-strip
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.sfeerverlichting_strip
+      - type: horizontal-stack
+        cards:   
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Hue Go Links
+              ulm_card_light_icon: phu:go
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.hue_go
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Hue Go Rechts
+              ulm_card_light_icon: phu:go
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.hue_go_rechts
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Bar
+              ulm_card_light_icon: phu:play
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.tv_bar
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Gradient
+              ulm_card_light_icon: phu:lightstrip-tv
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.gradient_lightstrip
+      - type: 'custom:button-card'
+        template: card_title
+        name: Keuken
+        entity: light.keuken_all
+        variables:
+          count_sensor: sensor.lights_on_kitchen
+        label: >
+          [[[
+            if (entity.state == 'on'){
+              if (states[variables.count_sensor].state != '1'){
+                return states[variables.count_sensor].state + ' lampen aan';
+              } else if (states[variables.count_sensor].state == '1'){
+                return states[variables.count_sensor].state + ' lamp aan';
+              }
+            } else {
+              return 'Geen lampen aan'
+            }
+          ]]]
+      - type: horizontal-stack
+        cards: 
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Spots
+              ulm_card_light_icon: phu:double-spot
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.keuken_spots
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Afzuigkap
+              ulm_card_light_icon: mdi:stove
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.afzuigkap
+      - type: 'custom:button-card'
+        template: card_title
+        name: Slaapkamer
+        entity: light.slaapkamer_all
+        variables:
+          count_sensor: sensor.lights_on_slaapkamer
+        label: >
+          [[[
+            if (entity.state == 'on'){
+              if (states[variables.count_sensor].state != '1'){
+                return states[variables.count_sensor].state + ' lampen aan';
+              } else if (states[variables.count_sensor].state == '1'){
+                return states[variables.count_sensor].state + ' lamp aan';
+              }
+            } else {
+              return 'Geen lampen aan'
+            }
+          ]]]
+      - type: horizontal-stack
+        cards:   
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Slaapkamer
+              ulm_card_light_icon: phu:ceiling-being
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.slaapkamer
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Sta lamp
+              ulm_card_light_icon: phu:floor-shade
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.sta_lamp
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Bureau 
+              ulm_card_light_icon: mdi:desk-lamp
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.bureau_lamp
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Bloom
+              ulm_card_light_icon: phu:bloom
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.sfeerverlichting_bloom

@@ -1,0 +1,20 @@
+title: badkamer
+path: Badkamer
+icon: 'mdi:shower'
+type: sidebar
+theme: minimalist-desktop 
+cards:
+  - !include "sidebar/sidebar.yaml"
+  - type: vertical-stack
+    view_layout:
+      position: main
+    cards:
+      - type: 'custom:button-card'
+        template: card_battery
+        variables:
+          ulm_card_battery_attribute:
+          ulm_card_battery_battery_state_entity_id: sensor.hd1903_battery_level
+          ulm_card_battery_battery_level_danger: 30
+          ulm_card_battery_battery_level_warning: 80
+        entity: sensor.hd1903_battery_level
+

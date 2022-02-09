@@ -1,0 +1,214 @@
+title: Slaapkamer
+path: Slaapkamer
+icon: mdi:bed-outline
+type: sidebar
+theme: minimalist-desktop 
+cards:
+  - !include "sidebar/sidebar.yaml"
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: chip_back
+            variables:
+              ulm_chip_back_path: '0'
+          - type: 'custom:button-card'
+            template: chip_icon_state_color_mdi
+            variables:
+              ulm_chip_icon_state_icon: null
+              ulm_chip_icon_state_entity: sensor.lights_on
+            icon: 'mdi:lightbulb-group'
+            entity: light.all_lights
+            color: auto
+          - type: custom:button-card
+            template: chip_temperature_color
+            variables:
+              ulm_chip_temperature_inside: sensor.woonkamer_temperature
+              ulm_chip_temperature_outside: sensor.openweathermap_temperature
+              ulm_chip_temperature_weather: weather.openweathermap
+          - type: 'custom:button-card'
+            template: chip_presence_detection_color
+            entity: input_boolean.home_mode
+            variables:
+              ulm_chip_presence_counter_residents: sensor.people_count_present
+          - type: 'custom:button-card'
+            template: chip_spotify
+            entity: media_player.spotify_bas_brussee
+            variables:
+              ulm_chip_icon_double_state_icon: '📻'
+              ulm_chip_icon_double_state_entity_1: sensor.spotify_song
+              ulm_chip_icon_double_state_entity_2: sensor.spotify_artist
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            template: card_title
+            name: Slaapkamer
+            entity: light.slaapkamer_all
+            variables:
+              count_sensor: sensor.lights_on_slaapkamer
+            label: >
+              [[[
+                if (entity.state == 'on'){
+                  if (states[variables.count_sensor].state != '1'){
+                    return states[variables.count_sensor].state + ' lampen aan';
+                  } else if (states[variables.count_sensor].state == '1'){
+                    return states[variables.count_sensor].state + ' lamp aan';
+                  }
+                } else {
+                  return 'Geen lampen aan'
+                }
+              ]]]
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            template: custom_card_mpse_thermostat
+            entity: climate.slaapkamer
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            template: card_graph
+            variables:
+              ulm_card_graph_color: "var(--google-yellow)"
+              ulm_card_graph_name: Temperatuur Slaapkamer
+              ulm_card_graph_entity: sensor.temperature_slaapkamer
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+          - type: 'custom:button-card'
+            template: card_graph
+            variables:
+              ulm_card_graph_color: "var(--google-blue)"
+              ulm_card_graph_name: Luchtvochtigheid Slaapkamer
+              ulm_card_graph_entity: sensor.humidity_slaapkamer
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            template: 
+              - card_power_outlet
+              - popup_power_outlet
+            variables:
+              ulm_card_power_outlet_consumption_sensor: sensor.power_beeldscherm
+              ulm_popup_power_outlet_sensor1: sensor.power_beeldscherm
+              ulm_popup_power_outlet_sensor2: sensor.consumption_beeldscherm
+              ulm_popup_power_outlet_graph_sensor: sensor.power_beeldscherm
+            entity: switch.beeldscherm
+            name: Beeldscherm
+          - type: 'custom:button-card'
+            template: 
+              - card_binary_sensor
+              - popup_power_outlet
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_popup_power_outlet_sensor1: binary_sensor.deur
+              ulm_popup_power_outlet_sensor2: sensor.deur_slaapkamer_battery_level
+              ulm_popup_power_outlet_graph_sensor: binary_sensor.deur
+            entity: binary_sensor.deur
+            show_last_changed: true
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: 'custom:button-card'
+                template: card_title
+                name: Media
+                label: >
+                  [[[ 
+                    if (states['sensor.denon_count'].state !='0'){
+                      if (states['sensor.denon_count'].state =='1'){
+                        return states['sensor.denon_count'].state + ' van 3 speelt af';  
+                      } else if (states['sensor.denon_count'].state != '1'){
+                        return states['sensor.denon_count'].state + ' van 3 spelen af';  ;
+                        }
+                    } else {
+                      return 'Niks speelt af';
+                    }
+                  ]]]
+              - type: horizontal-stack
+                cards:    
+                  - type: custom:mini-media-player
+                    entity: media_player.slaapkamer_speaker
+                    artwork: material
+                    info: scroll
+                    icon: mdi:speaker-wireless
+                    source: full
+                    style: |
+                        :host {
+                          --ha-card-border-radius: var(--border-radius);
+                          --ha-card-box-shadow: var(--box-shadow);
+                          }
+                    hide:
+                      play_pause: true
+                      play_stop: false
+                      artwork_cover: false
+                      shuffle: false
+                    idle_view:
+                      when_paused: true
+                      when_idle: true
+                    speaker_group:
+                      platform: media_player
+                      show_group_count: true
+                      entities:
+                        - entity_id: media_player.slaapkamer_speaker
+                          name: Slaapkamer
+                        - entity_id: media_player.keuken_speaker
+                          name: Keuken 
+                        - entity_id: media_player.versterker
+                          name: Woonkamer  
+                  - type: custom:mini-media-player
+                    entity: media_player.mibox
+                    artwork: material
+                    info: scroll
+                    icon: mdi:television-box
+                    source: full
+                    style: |
+                      :host {
+                        --ha-card-border-radius: var(--border-radius);
+                        --ha-card-box-shadow: var(--box-shadow);
+                        }
+                    hide:
+                      play_pause: true
+                      play_stop: false
+                      artwork_cover: false
+                    idle_view:
+                      when_paused: true
+                      when_idle: true   
+      - type: horizontal-stack
+        cards:  
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Slaapkamer
+              ulm_card_light_icon: phu:ceiling-being
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.slaapkamer
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Sta lamp
+              ulm_card_light_icon: phu:floor-shade
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.sta_lamp  
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Bureau 
+              ulm_card_light_icon: mdi:desk-lamp
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.bureau_lamp
+          - type: 'custom:button-card'
+            template: card_light
+            variables:
+              ulm_card_light_name: Bloom
+              ulm_card_light_icon: phu:bloom
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_popup: true
+            entity: light.sfeerverlichting_bloom

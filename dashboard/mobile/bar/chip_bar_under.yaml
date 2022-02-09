@@ -1,0 +1,45 @@
+type: custom:swipe-card
+parameters:
+  spaceBetween: 6
+  autoHeight: true
+cards:
+  - type: "custom:button-card"
+    template: chip_icon_state_color_mdi
+    entity: group.denon
+    variables:
+      ulm_chip_icon_state_icon: null
+      ulm_chip_icon_state_entity: sensor.denon_count
+    icon: mdi:speaker-wireless
+  - type: "custom:button-card"
+    template: chip_tado
+    entity: group.tado
+    icon: si:tado
+  - type: "custom:button-card"
+    template: chip_vacuum
+    entity: automation.auto_vacuum
+  - type: "custom:button-card"
+    template: chip_icon_only_color
+    entity: input_boolean.night_mode
+    variables:
+      ulm_chip_icon_only: null # set the variable to null
+    icon: mdi:weather-night # add your icon
+    label: null
+  - type: "custom:button-card"
+    template: chip_icon_only_color
+    entity: switch.adguard_protection
+    variables:
+      ulm_chip_icon_only: null # set the variable to null
+    icon: mdi:shield-check # add your icon
+    label: null
+  - type: "custom:button-card"
+    template: chip_icon_state_color_mdi
+    entity: input_boolean.wasmachine_status
+    variables:
+      ulm_chip_icon_state_icon: null
+      ulm_chip_icon_state_entity: sensor.wasmachine_live
+  - type: "custom:button-card"
+    template: chip_icon_state_color_mdi
+    entity: input_boolean.vaatwasser_status
+    variables:
+      ulm_chip_icon_state_icon: null
+      ulm_chip_icon_state_entity: sensor.vaatwasser_live
