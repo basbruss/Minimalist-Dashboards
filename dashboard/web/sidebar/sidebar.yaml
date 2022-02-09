@@ -2,22 +2,22 @@ type: vertical-stack
 view_layout:
   position: sidebar
 cards:
-  - type: 'custom:button-card'
+  - type: "custom:button-card"
     template: custom_card_paddy_welcome_with_weather
     variables:
       ulm_custom_card_paddy_welcome_time: sensor.time
       ulm_custom_card_paddy_welcome_weather_provider: weather.buienradar
   - type: custom:mini-media-player
-    entity: media_player.spotify_bas_brussee
+    entity: !secret spotify_bas
     artwork: material
     info: scroll
     icon: mdi:spotify
     source: full
     style: |
-        :host {
-          --ha-card-border-radius: var(--border-radius);
-          --ha-card-box-shadow: var(--box-shadow);
-          }
+      :host {
+        --ha-card-border-radius: var(--border-radius);
+        --ha-card-box-shadow: var(--box-shadow);
+        }
     hide:
       play_pause: false
       play_stop: true
@@ -33,10 +33,10 @@ cards:
     icon: mdi:audio-video
     source: scroll
     style: |
-        :host {
-          --ha-card-border-radius: var(--border-radius);
-          --ha-card-box-shadow: var(--box-shadow);
-          }
+      :host {
+        --ha-card-border-radius: var(--border-radius);
+        --ha-card-box-shadow: var(--box-shadow);
+        }
     hide:
       play_pause: true
       play_stop: false
@@ -47,8 +47,8 @@ cards:
   - type: conditional
     conditions:
       - entity: media_player.home_theater
-        state: 'on'
-    card:    
+        state: "on"
+    card:
       type: custom:mini-media-player
       entity: media_player.home_theater
       artwork: material
@@ -69,7 +69,7 @@ cards:
     conditions:
       - entity: media_player.slaapkamer_speaker
         state: playing
-    card:    
+    card:
       type: custom:mini-media-player
       entity: media_player.slaapkamer_speaker
       icon: mdi:speaker-wireless
@@ -98,7 +98,7 @@ cards:
     conditions:
       - entity: media_player.keuken_speaker
         state: playing
-    card:    
+    card:
       type: custom:mini-media-player
       entity: media_player.keuken_speaker
       icon: mdi:speaker-wireless
