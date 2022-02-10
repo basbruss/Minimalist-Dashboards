@@ -19,7 +19,7 @@ This dashboard is designed to view on mobile devices.
 
 I am using a so called "split config". This allows me to put each tab in it's own YAML-file. And it allows me to re-use parts which are included in multiple tabs without copying large amounts of code (like the sidebar).
 
-All my dashboard files use `!include` to add additional tabs. I don not use `!include_dir_merge_list: mobile/` because that sorts based on an alphabetic/numeric order. This approach allows me to have more control of the order of the tabs.
+All my dashboard files use `!include` to add additional tabs. I don not use `!include_dir_merge_list: mobile/` because that sorts based on an alphabetic/numeric order. This approach allows me to have more control of the order of the tabs without changing names of the files to achieve a different order.
 ```yaml
 ---
 button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
