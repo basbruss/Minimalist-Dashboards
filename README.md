@@ -14,3 +14,53 @@ This dashboard is designed to show on PC's and Tablets. It makes use of the ["Si
 This dashboard is designed to view on mobile devices.
 
 <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.png" width="200">
+
+## File system
+
+I am using a so called "split config". This allows me to put each tab in it's own YAML-file. And it allows me to re-use parts which are included in multiple tabs without copying large amounts of code (like the sidebar).
+
+All my dashboard files use `!include` to add additional tabs. I don not use `!include_dir_merge_list: mobile/` because that sorts based on an alphabetic/numeric order. This approach allows me to have more control of the order of the tabs.
+```yaml
+---
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+
+title: "UI Lovelace Minimalist"
+theme: "minimalist-desktop"
+views:
+  - !include "mobile/main.yaml"
+  - !include "mobile/lights.yaml"
+  - !include "mobile/woonkamer.yaml"
+  - !include "mobile/slaapkamer.yaml"
+  - !include "mobile/badkamer.yaml"
+  - !include "mobile/network.yaml"
+  - !include "mobile/energy.yaml"
+```
+
+```yaml
+config
+└── ui_lovelace_minimalist
+    ├── custom_cards
+    └── dashboard
+        ├── ui-lovelace.yaml            #web-dashboard
+        ├── ui-lovelace-mobile.yaml     #mobile-dashboard
+        ├── mobile                      #mobile-tabs
+            ├── main.yaml
+            ├── lights.yaml
+            ├── woonkamer.yaml
+            ├── slaapkamer.yaml
+            ├── badkamer.yaml
+            ├── network.yaml
+            ├── energy.yaml
+            └── bar
+                ├── chip_bar_top.yaml
+                ├── chip_bar_top_back.yaml
+                └── chip_bar_under.yaml
+        └── web                         #web-tabs
+            ├── main.yaml
+            ├── lights.yaml
+            ├── woonkamer.yaml
+            ├── slaapkamer.yaml
+            ├── badkamer.yaml
+            └── sidebar
+                └── sidebar.yaml
+```
