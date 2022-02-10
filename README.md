@@ -5,11 +5,11 @@
 
 This repo functions as a showcase of the [Minimalist](https://github.com/UI-Lovelace-Minimalist/UI) themed dashboards I am currently using. Feel free to take some inspiration from it to design your own Minimalist dashboards!
 
-## Web Dashboard (Sidebar)
+## [Web Dashboard (Sidebar)](https://github.com/basbruss/Minimalist-Dashboards/tree/main/dashboard/web)
 
 This dashboard is designed to show on PC's and Tablets. It makes use of the ["Sidebar View"](https://www.home-assistant.io/lovelace/sidebar/) style lovelace dashboard.
 
-## Mobile Dashboard
+## [Mobile Dashboard](https://github.com/basbruss/Minimalist-Dashboards/tree/main/dashboard/mobile)
 
 This dashboard is designed to view on mobile devices.
 
