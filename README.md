@@ -13,7 +13,7 @@ This dashboard is designed to show on PC's and Tablets. It makes use of the ["Si
 
 This dashboard is designed to view on mobile devices.
 
-<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.png" width="200">
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.png" width="200"> 
 
 ## File system
 
