@@ -4,10 +4,13 @@
 [![Minimalist Discord](https://badgen.net/discord/online-members/TPXg9b7GfR)](https://discord.gg/TPXg9b7GfR)
 
 This repo functions as a showcase of the [Minimalist](https://github.com/UI-Lovelace-Minimalist/UI) themed dashboards I am currently using. Feel free to take some inspiration from it to design your own Minimalist dashboards!
+*It's not advised to directly copy this repo for your own use*
 
 ## [Web Dashboard (Sidebar)](https://github.com/basbruss/Minimalist-Dashboards/tree/main/dashboard/web)
 
 This dashboard is designed to show on PC's and Tablets. It makes use of the ["Sidebar View"](https://www.home-assistant.io/lovelace/sidebar/) style lovelace dashboard.
+
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/light_main.png" width="500"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/light_lights.png" width="500"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/dark_lights.png" width="500"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/dark_main.png" width="500"> 
 
 ## [Mobile Dashboard](https://github.com/basbruss/Minimalist-Dashboards/tree/main/dashboard/mobile)
 
@@ -25,7 +28,7 @@ All my dashboard files use `!include` to add additional tabs. I don not use `!in
 button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
 
 title: "UI Lovelace Minimalist"
-theme: "minimalist-desktop"
+theme: "minimalist-mobile-tapbar"
 views:
   - !include "mobile/main.yaml"
   - !include "mobile/lights.yaml"
@@ -44,18 +47,18 @@ config
         ├── ui-lovelace.yaml            #web-dashboard
         ├── ui-lovelace-mobile.yaml     #mobile-dashboard
         ├── mobile                      #mobile-tabs
-            ├── main.yaml
-            ├── lights.yaml
-            ├── woonkamer.yaml
-            ├── slaapkamer.yaml
-            ├── badkamer.yaml
-            ├── network.yaml
-            ├── energy.yaml
-            └── bar
-                ├── chip_bar_top.yaml
-                ├── chip_bar_top_back.yaml
-                └── chip_bar_under.yaml
-        └── web                         #web-tabs
+        |   ├── main.yaml
+        |   ├── lights.yaml
+        |   ├── woonkamer.yaml
+        |   ├── slaapkamer.yaml
+        |   ├── badkamer.yaml
+        |   ├── network.yaml
+        |   ├── energy.yaml
+        |   └── bar
+        |       ├── chip_bar_top.yaml
+        |       ├── chip_bar_top_back.yaml
+        |       └── chip_bar_under.yaml
+        └── web                        #web-tabs
             ├── main.yaml
             ├── lights.yaml
             ├── woonkamer.yaml
@@ -63,4 +66,26 @@ config
             ├── badkamer.yaml
             └── sidebar
                 └── sidebar.yaml
+```
+
+## Mulitple dashboards
+
+The integration only configures one dashboard for you (`"ui_lovelace.yaml"`). You can alter this file to your liking. To add more dashboards you can configure them in your `"configuration.yaml"` file. It should be something like:
+```yaml
+lovelace:
+  mode: storage
+  # Add yaml dashboards
+  dashboards:
+    lovelace-minimalist-mobile:
+      mode: yaml
+      title: Minimalist Mobile
+      icon: mdi:flower
+      show_in_sidebar: true
+      filename: ui_lovelace_minimalist/dashboard/ui-lovelace-mobile.yaml
+    # lovelace-minimalist-tablet:
+    #   mode: yaml
+    #   title: Minimalist tablet
+    #   icon: mdi:flower
+    #   show_in_sidebar: true
+    #   filename: ui_lovelace_minimalist/dashboard/ui-lovelace-tablet.yaml
 ```

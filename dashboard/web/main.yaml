@@ -104,24 +104,28 @@ cards:
         cards:
           - type: "custom:button-card"
             template: vertical_buttons_blue_custom
+            show_last_changed: true
             entity: switch.media
             variables:
               ulm_button_blue_icon_on: mdi:power-plug-outline
               ulm_button_blue_icon_off: mdi:power-plug-off-outline
           - type: "custom:button-card"
             template: vertical_buttons_blue_custom
+            show_last_changed: true
             entity: switch.beeldscherm
             variables:
               ulm_button_blue_icon_on: mdi:monitor
               ulm_button_blue_icon_off: mdi:monitor-off
           - type: "custom:button-card"
             template: vertical_buttons_blue_custom
+            show_last_changed: true
             entity: light.subwoofer
             variables:
               ulm_button_blue_icon_on: mdi:speaker
               ulm_button_blue_icon_off: mdi:speaker-off
           - type: "custom:button-card"
             template: vertical_buttons_blue_custom
+            show_last_changed: true
             entity: input_boolean.film_mode
             variables:
               ulm_button_blue_icon_on: mdi:movie-open

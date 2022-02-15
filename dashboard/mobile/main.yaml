@@ -6,6 +6,12 @@ cards:
     cards:
       - !include "bar/chip_bar_top.yaml"
       - !include "bar/chip_bar_under.yaml"
+      - type: "custom:button-card"
+        template: card_title
+        name: Favorieten
+        tap_action:
+          action: navigate
+          navigation_path: "/config/dashboard"
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -28,22 +34,6 @@ cards:
               ulm_card_person_zone2: zone.school
               ulm_card_person_battery: sensor.iphone11_battery_level
               ulm_card_person_eta: sensor.waze_travel_time_angelique
-      - type: horizontal-stack
-        cards:
-          - type: "custom:button-card"
-            template: card_weather
-            entity: weather.buienradar
-            variables:
-              ulm_card_weather_name: " "
-              ulm_card_weather_primary_info:
-                - extrema
-                - humidity
-                - precipitation_probability
-              ulm_card_weather_secondary_info:
-                - wind_bearing
-                - wind_speed
-              ulm_card_weather_backdrop:
-                fade: false
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -277,6 +267,20 @@ cards:
             variables:
               ulm_button_yellow_icon_on: mdi:audio-video
               ulm_button_yellow_icon_off: mdi:audio-video-off
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_vacuum
+            entity: vacuum.mova
+            variables:
+              ulm_card_vacuum_room: script.vacuum_home
+          - type: "custom:button-card"
+            template:
+              - card_media_player_controls
+              - popup_media_player
+            variables:
+              ulm_card_media_player_controls_name: "Livingroom Shield"
+              ulm_card_media_player_controls_entity: !secret spotify_bas
       - type: "custom:button-card"
         template: card_title
         name: Media
@@ -292,27 +296,6 @@ cards:
               return 'Niks speelt af';
             }
           ]]]
-      - type: horizontal-stack
-        cards:
-          - type: custom:mini-media-player
-            entity: !secret spotify_bas
-            artwork: material
-            info: scroll
-            icon: mdi:spotify
-            source: full
-            style: |
-              :host {
-                --ha-card-border-radius: var(--border-radius);
-                --ha-card-box-shadow: var(--box-shadow);
-                }
-            hide:
-              play_pause: true
-              play_stop: false
-              artwork_cover: false
-              shuffle: false
-            idle_view:
-              when_paused: true
-              when_idle: true
       - type: horizontal-stack
         cards:
           - type: custom:mini-media-player

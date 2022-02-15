@@ -124,7 +124,6 @@ chip_vacuum:
 
 vertical_buttons_blue_custom:
   template: vertical_buttons
-  show_name: false
   variables:
     variables.ulm_button_blue_icon_on:
     variables.ulm_button_blue_icon_off:
@@ -132,7 +131,7 @@ vertical_buttons_blue_custom:
     - value: "on"
       icon: >
         [[[
-          var icon = 'mdi:flash';
+          var icon = entity.attributes.icon;
             if (variables.ulm_button_blue_icon_on != null){
               var icon = variables.ulm_button_blue_icon_on;
             } 
@@ -155,7 +154,7 @@ vertical_buttons_blue_custom:
     - value: "off"
       icon: >
         [[[
-          var icon = 'mdi:flash-off';
+          var icon = entity.attributes.icon;
           if (variables.ulm_button_blue_icon_off != null){
             var icon = variables.ulm_button_blue_icon_off;
           } 
@@ -173,7 +172,7 @@ vertical_buttons_green_custom:
     - value: "on"
       icon: >
         [[[
-          var icon = 'mdi:flash';
+          var icon = entity.attributes.icon;
             if (variables.ulm_button_green_icon_on != null){
               var icon = variables.ulm_button_green_icon_on;
             } 
@@ -196,7 +195,7 @@ vertical_buttons_green_custom:
     - value: "off"
       icon: >
         [[[
-          var icon = 'mdi:flash-off';
+          var icon = entity.attributes.icon;
           if (variables.ulm_button_green_icon_off != null){
             var icon = variables.ulm_button_green_icon_off;
           } 
@@ -214,7 +213,7 @@ vertical_buttons_yellow_custom:
     - value: "on"
       icon: >
         [[[
-          var icon = 'mdi:flash';
+          var icon = entity.attributes.icon;
             if (variables.ulm_button_yellow_icon_on != null){
               var icon = variables.ulm_button_yellow_icon_on;
             } 
@@ -237,7 +236,7 @@ vertical_buttons_yellow_custom:
     - value: "off"
       icon: >
         [[[
-          var icon = 'mdi:flash-off';
+          var icon = entity.attributes.icon;
           if (variables.ulm_button_yellow_icon_off != null){
             var icon = variables.ulm_button_yellow_icon_off;
           } 
