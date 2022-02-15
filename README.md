@@ -43,6 +43,15 @@ views:
 config
 └── ui_lovelace_minimalist
     ├── custom_cards
+    |   ├── custom_design.yaml
+    |   ├── wifi_card
+    |   |   ├──  wifi_card.yaml
+    |   ├── speedtest
+    |   |   ├── speedtest.yaml
+    |   ├── custom_card_schumijo_flower
+    |   |   ├── custom_card_schumijo_flower.yaml
+    |   ├── custom_card_mpse_thermostat
+    |   |   ├── custom_card_mpse_thermostat.yaml
     └── dashboard
         ├── ui-lovelace.yaml            #web-dashboard
         ├── ui-lovelace-mobile.yaml     #mobile-dashboard
@@ -84,8 +93,8 @@ lovelace:
       filename: ui_lovelace_minimalist/dashboard/ui-lovelace-mobile.yaml
     # lovelace-minimalist-tablet:
     #   mode: yaml
-    #   title: Minimalist tablet
+    #   title: Minimalist Desktop
     #   icon: mdi:flower
     #   show_in_sidebar: true
-    #   filename: ui_lovelace_minimalist/dashboard/ui-lovelace-tablet.yaml
+    #   filename: ui_lovelace_minimalist/dashboard/ui-lovelace.yaml
 ```
