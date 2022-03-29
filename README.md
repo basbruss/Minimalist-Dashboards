@@ -10,8 +10,8 @@ This repo functions as a showcase of the [Minimalist](https://github.com/UI-Love
 
 This dashboard is designed to view on mobile devices.
 
-<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_woonkamer.PNG" width="200">
-<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_woonkamer.PNG" width="200"> 
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_woonkamer.PNG" width="200">
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_woonkamer.PNG" width="200"> 
 
 ## [Web Dashboard (Sidebar)](https://github.com/basbruss/Minimalist-Dashboards/tree/main/dashboard/web)
 
