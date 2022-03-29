@@ -1,0 +1,110 @@
+type: vertical-stack
+view_layout:
+  grid-area: media
+cards:
+  - type: "custom:button-card"
+    template: card_title
+    name: Media
+    label: >
+      [[[ 
+        if (states['media_player.sync_box'].state !='playing'){
+          return "Geen gesynchroniseerde lampen"
+        } else {
+          return 'Lampen worden gesynchroniseerd';
+        }
+      ]]]
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: vertical_buttons_yellow_custom
+        entity: switch.woonkamer_playstation
+        name: PS5
+        variables:
+          ulm_button_yellow_icon_on: si:playstation5
+          ulm_button_yellow_icon_off: mdi:sony-playstation
+      - type: "custom:button-card"
+        template: vertical_buttons_yellow_custom
+        entity: switch.woonkamer_kpn
+        name: KPN
+        variables:
+          ulm_button_yellow_icon_on: mdi:television
+          ulm_button_yellow_icon_off: mdi:television-off
+      - type: "custom:button-card"
+        template: vertical_buttons_yellow_custom
+        entity: switch.woonkamer_smart_tv
+        name: Smart-TV
+        variables:
+          ulm_button_yellow_icon_on: mdi:cast
+          ulm_button_yellow_icon_off: mdi:cast-off
+      - type: "custom:button-card"
+        template: vertical_buttons_yellow_custom
+        entity: switch.woonkamer_luisteren_naar_heos
+        name: Heos
+        variables:
+          ulm_button_yellow_icon_on: mdi:audio-video
+          ulm_button_yellow_icon_off: mdi:audio-video-off
+  - type: "custom:button-card"
+    template:
+      - "card_media_player"
+    entity: media_player.versterker
+    variables:
+      ulm_card_media_player_player_controls_entity: media_player.versterker
+      ulm_card_media_player_icon:
+      ulm_card_media_player_enable_art: true
+      ulm_card_media_player_enable_controls: true
+      ulm_card_media_player_enable_popup: true
+  - type: conditional
+    conditions:
+      - entity: media_player.home_theater
+        state: "on"
+    card:
+      type: custom:mini-media-player
+      entity: media_player.home_theater
+      artwork: material
+      info: scroll
+      icon: mdi:audio-video
+      sound_mode: full
+      source: icon
+      hide:
+        source: true
+        sound_mode: false
+        controls: true
+        volume: true
+  - type: custom:mini-media-player
+    entity: media_player.slaapkamer_speaker
+    icon: mdi:speaker-wireless
+    info: scroll
+    artwork: material
+    hide:
+      play_pause: true
+      play_stop: false
+    speaker_group:
+      expanded: false
+      platform: heos
+      show_group_count: true
+      entities:
+        - entity_id: media_player.versterker
+          name: Woonkamer
+        - entity_id: media_player.keuken_speaker
+          name: Keuken
+        - entity_id: media_player.slaapkamer_speaker
+          name: Slaapkamer
+  - type: custom:mini-media-player
+    entity: media_player.keuken_speaker
+    icon: mdi:speaker-wireless
+    info: scroll
+    artwork: material
+    hide:
+      play_pause: true
+      play_stop: false
+    speaker_group:
+      expanded: false
+      platform: heos
+      show_group_count: true
+      entities:
+        - entity_id: media_player.versterker
+          name: Woonkamer
+        - entity_id: media_player.keuken_speaker
+          name: Keuken
+        - entity_id: media_player.slaapkamer_speaker
+          name: Slaapkamer

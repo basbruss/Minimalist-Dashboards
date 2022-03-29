@@ -16,7 +16,8 @@ This dashboard is designed to show on PC's and Tablets. It makes use of the ["Si
 
 This dashboard is designed to view on mobile devices.
 
-<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.png" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.png" width="200"> 
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_main.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_lights.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/light_woonkamer.PNG" width="200">
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_lights.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_main.PNG" width="200"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mobile/dark_woonkamer.PNG" width="200"> 
 
 ## File system
 
@@ -64,7 +65,13 @@ config
             ├── woonkamer.yaml
             ├── slaapkamer.yaml
             ├── badkamer.yaml
-            └── sidebar
+            └── areas
+                └── chips.yaml
+                └── climate.yaml
+                └── devices.yaml
+                └── media.yaml
+                └── power.yaml
+                └── rooms.yaml
                 └── sidebar.yaml
 ```
 

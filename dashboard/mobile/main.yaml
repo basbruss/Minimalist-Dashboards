@@ -5,13 +5,32 @@ cards:
   - type: vertical-stack
     cards:
       - !include "bar/chip_bar_top.yaml"
-      - !include "bar/chip_bar_under.yaml"
       - type: "custom:button-card"
-        template: card_title
-        name: Favorieten
-        tap_action:
-          action: navigate
-          navigation_path: "/config/dashboard"
+        template: "card_welcome_scenes"
+        triggers_update: input_boolean.test
+        variables:
+          ulm_card_welcome_scenes_collapse: input_boolean.test
+          ulm_weather: weather.buienradar
+          entity_1:
+            entity_id: input_boolean.home_mode
+            icon:
+            name: Thuis
+          entity_2:
+            entity_id: input_boolean.away_mode
+            icon:
+            name: Weg
+          entity_3:
+            entity_id: input_boolean.night_mode
+            icon:
+            name: Nacht
+          entity_4:
+            entity_id: input_boolean.film_mode
+            icon:
+            name: Film
+          entity_5:
+            entity_id: script.licht_random
+            icon:
+            name: Scene
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -22,7 +41,7 @@ cards:
               ulm_card_person_use_entity_picture: true
               ulm_card_person_zone1: zone.werk
               ulm_card_person_zone2: zone.school
-              ulm_card_person_battery: sensor.hd1903_battery_level
+              ulm_card_person_battery: sensor.iphone_van_bas_battery_level
               ulm_card_person_eta: sensor.waze_travel_time_bas
           - type: "custom:button-card"
             template: card_person_custom
@@ -54,12 +73,6 @@ cards:
             variables:
               ulm_button_blue_icon_on: mdi:speaker
               ulm_button_blue_icon_off: mdi:speaker-off
-          - type: "custom:button-card"
-            template: vertical_buttons_blue_custom
-            entity: input_boolean.film_mode
-            variables:
-              ulm_button_blue_icon_on: mdi:movie-open
-              ulm_button_blue_icon_off: mdi:movie-open-off
       - type: "custom:button-card"
         template: card_title
         name: Kamers
@@ -276,11 +289,14 @@ cards:
               ulm_card_vacuum_room: script.vacuum_home
           - type: "custom:button-card"
             template:
-              - card_media_player_controls
-              - popup_media_player
+              - "card_media_player"
+            entity: media_player.versterker
             variables:
-              ulm_card_media_player_controls_name: "Livingroom Shield"
-              ulm_card_media_player_controls_entity: !secret spotify_bas
+              ulm_card_media_player_player_controls_entity: media_player.versterker
+              ulm_card_media_player_icon:
+              ulm_card_media_player_enable_art: true
+              ulm_card_media_player_enable_controls: true
+              ulm_card_media_player_enable_popup: true
       - type: "custom:button-card"
         template: card_title
         name: Media

@@ -9,28 +9,23 @@ cards:
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            template: card_title
+            template:
+              - card_title
+              - custom_count_label_lights
             name: Badkamer
             entity: light.badkamer_lampen
             variables:
               count_sensor: sensor.lights_on_badkamer
-            label: >
-              [[[
-                if (entity.state == 'on'){
-                  if (states[variables.count_sensor].state != '1'){
-                    return states[variables.count_sensor].state + ' lampen aan';
-                  } else if (states[variables.count_sensor].state == '1'){
-                    return states[variables.count_sensor].state + ' lamp aan';
-                  }
-                } else {
-                  return 'Geen lampen aan'
-                }
-              ]]]
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            template: custom_card_mpse_thermostat
+            template: card_thermostat
             entity: climate.badkamer
+            variables:
+              ulm_card_thermostat_enable_popup: true
+              ulm_card_thermostat_enable_controls: true
+              ulm_card_thermostat_enable_display_temperature: true
+              ulm_card_thermostat_enable_hvac_modes: true
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"

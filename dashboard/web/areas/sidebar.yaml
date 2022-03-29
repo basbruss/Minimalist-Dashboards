@@ -1,0 +1,131 @@
+type: vertical-stack
+view_layout:
+  grid-area: sidebar
+cards:
+  - type: "custom:button-card"
+    template: "card_welcome_scenes"
+    triggers_update: input_boolean.test
+    variables:
+      ulm_card_welcome_scenes_collapse: input_boolean.test
+      ulm_weather: weather.buienradar
+      entity_1:
+        entity_id: input_boolean.home_mode
+        icon:
+        name: Thuis
+      entity_2:
+        entity_id: input_boolean.away_mode
+        icon:
+        name: Weg
+      entity_3:
+        entity_id: input_boolean.night_mode
+        icon:
+        name: Nacht
+      entity_4:
+        entity_id: input_boolean.film_mode
+        icon:
+        name: Film
+      entity_5:
+        entity_id: script.licht_random
+        icon:
+        name: Scene
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_person_custom
+        entity: !secret person_bas
+        variables:
+          ulm_card_person_entity: !secret person_bas
+          ulm_card_person_use_entity_picture: true
+          ulm_card_person_zone1: zone.werk
+          ulm_card_person_zone2: zone.school
+          ulm_card_person_battery: sensor.iphone_van_bas_battery_level
+          ulm_card_person_eta: sensor.waze_travel_time_bas
+      - type: "custom:button-card"
+        template: card_person_custom
+        entity: person.angelique
+        variables:
+          ulm_card_person_entity: person.angelique
+          ulm_card_person_use_entity_picture: true
+          ulm_card_person_zone1: zone.werk_angelique
+          ulm_card_person_zone2: zone.school
+          ulm_card_person_battery: sensor.iphone11_battery_level
+          ulm_card_person_eta: sensor.waze_travel_time_angelique
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: vertical_buttons_blue_custom
+        entity: switch.media
+        variables:
+          ulm_button_blue_icon_on: mdi:power-plug-outline
+          ulm_button_blue_icon_off: mdi:power-plug-off-outline
+      - type: "custom:button-card"
+        template: vertical_buttons_blue_custom
+        entity: switch.beeldscherm
+        variables:
+          ulm_button_blue_icon_on: mdi:monitor
+          ulm_button_blue_icon_off: mdi:monitor-off
+      - type: "custom:button-card"
+        template: vertical_buttons_blue_custom
+        entity: light.subwoofer
+        variables:
+          ulm_button_blue_icon_on: mdi:speaker
+          ulm_button_blue_icon_off: mdi:speaker-off
+  - type: custom:vacuum-card
+    entity: vacuum.mova
+    image: default
+    compact_view: false
+    style: |
+      :host .preview {
+        background: var(--card-background-color);
+      }
+      .preview .status-text {
+        color: var(--primary-text-color);
+      }
+      .preview .header {
+        color: var(--primary-text-color);
+      }
+      .preview .vacuum-name {
+        color: var(--primary-text-color);
+      }
+      .preview .stats {
+        color: var(--primary-text-color);
+        border-top: 1px solid var(--disabled-text-color);
+      }
+      .preview .stats .stats-block {
+        border-right: 1px solid var(--disabled-text-color);
+      }
+      :host ha-icon {
+        color: var(--primary-text-color);
+      }
+    stats:
+      default:
+        - attribute: side_brush_time_left
+          unit: hours
+          subtitle: Zijborstel
+        - attribute: filter_time_left
+          unit: hours
+          subtitle: Filter
+        - attribute: main_brush_time_left
+          unit: hours
+          subtitle: Borstel
+        - attribute: waterbox
+          subtitle: Watertank
+      cleaning:
+        - attribute: cleaning_area
+          unit: M2
+          subtitle: Area
+        - attribute: cleaning_time
+          unit: min
+          subtitle: Time
+        - attribute: waterbox
+          subtitle: Watertank
+    shortcuts:
+      - name: Clean Living
+        service: script.vacuum_living
+        icon: mdi:sofa-outline
+      - name: Clean Kitchen
+        icon: mdi:stove
+        service: script.vacuum_kitchen
+      - name: Clean House
+        icon: mdi:home-floor-1
+        service: script.vacuum_home

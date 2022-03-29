@@ -79,12 +79,12 @@ cards:
         cards:
           - type: "custom:button-card"
             template: card_battery
-            entity: sensor.hd1903_battery_level
+            entity: sensor.iphone_van_bas_battery_level
             variables:
-              ulm_card_battery_charger_type_entity_id: sensor.hd1903_battery_level
+              ulm_card_battery_charger_type_entity_id: sensor.iphone_van_bas_battery_level
               ulm_card_battery_battery_level_danger: 20
               ulm_card_battery_battery_level_warning: 50
-            name: OnePlus 7T
+            name: iPhone Bas
           - type: "custom:button-card"
             template: card_battery
             entity: sensor.iphone11_battery_level
@@ -92,15 +92,7 @@ cards:
               ulm_card_battery_charger_type_entity_id: sensor.iphone11_battery_level
               ulm_card_battery_battery_level_danger: 20
               ulm_card_battery_battery_level_warning: 50
-            name: iPhone 11
-          - type: "custom:button-card"
-            template: card_battery
-            entity: sensor.ipad_van_angelique_battery_level
-            variables:
-              ulm_card_battery_charger_type_entity_id: sensor.ipad_van_angelique_battery_level
-              ulm_card_battery_battery_level_danger: 20
-              ulm_card_battery_battery_level_warning: 50
-            name: iPad pro
+            name: iPhone Angelique
           - type: "custom:button-card"
             template: card_battery
             entity: sensor.macbook_pro_van_bas_internal_battery_level
@@ -109,6 +101,17 @@ cards:
               ulm_card_battery_battery_level_danger: 20
               ulm_card_battery_battery_level_warning: 50
             name: Macbook pro
+          - type: "custom:button-card"
+            template: card_battery
+            entity: sensor.ipad_van_angelique_battery_level
+            variables:
+              ulm_card_battery_charger_type_entity_id: sensor.ipad_van_angelique_battery_level
+              ulm_card_battery_battery_level_danger: 20
+              ulm_card_battery_battery_level_warning: 50
+            name: iPad pro
+      - type: "custom:button-card"
+        template: card_title
+        label: Overige
       - type: "custom:auto-entities"
         card:
           type: "grid"

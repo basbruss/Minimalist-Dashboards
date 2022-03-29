@@ -7,23 +7,13 @@ cards:
       - !include "bar/chip_bar_top_back.yaml"
       - !include "bar/chip_bar_under.yaml"
       - type: "custom:button-card"
-        template: card_title
+        template:
+          - card_title
+          - custom_count_label_lights
         name: Lampen
         entity: light.all_lights
         variables:
           count_sensor: sensor.lights_on
-        label: >
-          [[[
-            if (entity.state == 'on'){
-              if (states[variables.count_sensor].state != '1'){
-                return states[variables.count_sensor].state + ' lampen aan';
-              } else if (states[variables.count_sensor].state == '1'){
-                return states[variables.count_sensor].state + ' lamp aan';
-              }
-            } else {
-              return 'Geen lampen aan'
-            }
-          ]]]
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -55,23 +45,13 @@ cards:
               ulm_button_yellow_icon_on: mdi:shower
               ulm_button_yellow_icon_off: mdi:shower
       - type: "custom:button-card"
-        template: card_title
+        template:
+          - card_title
+          - custom_count_label_lights
         name: Woonkamer
         entity: light.living_all
         variables:
           count_sensor: sensor.lights_on_living
-        label: >
-          [[[
-            if (entity.state == 'on'){
-              if (states[variables.count_sensor].state != '1'){
-                return states[variables.count_sensor].state + ' lampen aan';
-              } else if (states[variables.count_sensor].state == '1'){
-                return states[variables.count_sensor].state + ' lamp aan';
-              }
-            } else {
-              return 'Geen lampen aan'
-            }
-          ]]]
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -151,23 +131,13 @@ cards:
               ulm_card_light_enable_popup: true
             entity: light.gradient_lightstrip
       - type: "custom:button-card"
-        template: card_title
+        template:
+          - card_title
+          - custom_count_label_lights
         name: Keuken
         entity: light.keuken_all
         variables:
           count_sensor: sensor.lights_on_kitchen
-        label: >
-          [[[
-            if (entity.state == 'on'){
-              if (states[variables.count_sensor].state != '1'){
-                return states[variables.count_sensor].state + ' lampen aan';
-              } else if (states[variables.count_sensor].state == '1'){
-                return states[variables.count_sensor].state + ' lamp aan';
-              }
-            } else {
-              return 'Geen lampen aan'
-            }
-          ]]]
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -191,23 +161,13 @@ cards:
               ulm_card_light_enable_popup: true
             entity: light.afzuigkap
       - type: "custom:button-card"
-        template: card_title
+        template:
+          - card_title
+          - custom_count_label_lights
         name: Slaapkamer
         entity: light.slaapkamer_all
         variables:
           count_sensor: sensor.lights_on_slaapkamer
-        label: >
-          [[[
-            if (entity.state == 'on'){
-              if (states[variables.count_sensor].state != '1'){
-                return states[variables.count_sensor].state + ' lampen aan';
-              } else if (states[variables.count_sensor].state == '1'){
-                return states[variables.count_sensor].state + ' lamp aan';
-              }
-            } else {
-              return 'Geen lampen aan'
-            }
-          ]]]
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"

@@ -72,6 +72,9 @@ chip_presence_detection_color:
 ### custom made own chips
 chip_spotify:
   template: chip_icon_double_state
+  styles:
+    card:
+      - max-width: "250px"
   state:
     - value: "playing"
       styles:
@@ -88,6 +91,7 @@ chip_spotify:
 chip_tado:
   show_icon: true
   template: chips
+  triggers_upate: "all"
   styles:
     icon:
       - color: |
@@ -104,6 +108,7 @@ chip_tado:
 chip_vacuum:
   show_icon: true
   template: chips
+  triggers_upate: "all"
   icon: phu:roborock
   tap_action:
     action: "toggle"
@@ -116,9 +121,9 @@ chip_vacuum:
         icon:
           - color: |
               [[[
-                if (states['vacuum.mova'].state == 'cleaning') return 'green';
-                if (states['vacuum.mova'].state == 'paused') return 'orange';
-                if (states['vacuum.mova'].state == 'returning') return 'yellow';
+                if (states['vacuum.mova'].state == 'cleaning') return 'var(color-blue)';
+                if (states['vacuum.mova'].state == 'paused') return 'var(--color-green)';
+                if (states['vacuum.mova'].state == 'returning') return 'var(--color-purple)';
                 else return "#5F9BEA";
               ]]]
 
@@ -505,6 +510,7 @@ room:
     item1:
       card:
         type: custom:button-card
+        triggers_update: "all"
         template: item_room
         variables:
           count_sensor: "[[[ return variables.count_sensor ]]]"
@@ -524,6 +530,7 @@ room:
           text-anchor="middle" alignment-baseline="middle">
           ${brightness}<tspan font-size="10">%</tspan></text></svg>`;} ]]]
 room_button:
+  triggers_update: "all"
   template: room
   styles:
     grid:
