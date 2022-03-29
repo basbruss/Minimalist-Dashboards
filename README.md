@@ -10,7 +10,7 @@ This repo functions as a showcase of the [Minimalist](https://github.com/UI-Love
 
 This dashboard is designed to show on PC's and Tablets. It makes use of the ["Sidebar View"](https://www.home-assistant.io/lovelace/sidebar/) style lovelace dashboard.
 
-<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/light_main.png" width="400"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/light_lights.png" width="400"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/dark_lights.png" width="400"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/dark_main.png" width="400"> 
+<img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/light_main.png" width="400"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/light_lights.png" width="400"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/dark_main.png" width="400"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/web/dark_lights.png" width="400">
 
 ## [Mobile Dashboard](https://github.com/basbruss/Minimalist-Dashboards/tree/main/dashboard/mobile)
 
