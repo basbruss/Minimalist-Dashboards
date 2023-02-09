@@ -27,6 +27,13 @@ This dashboard is made with the Adaptive Dashboard provided by [UI-Minimalist](h
 | [`state-switch`](https://github.com/thomasloven/lovelace-state-switch) |
 | [`swiper-card`](https://github.com/bramkragten/swipe-card)|
 
+## Helpers
+I am using two `input_select` helpers in combination with `state-swtich`for this dashboard.
+
+1. `input_select.adaptive_dashboard` for the right-side popups <br>
+        the options can be found in `popup.yaml`.
+2. `input_select.adaptive_slider` for the card-slider. <br>
+        the options can be found in `main.yaml`.
 ## File system
 
 I am using a so called "split config". This allows me to put each tab in it's own YAML-file. And it allows me to re-use parts which are included in multiple tabs without copying large amounts of code. 
