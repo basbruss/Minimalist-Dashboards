@@ -9,7 +9,7 @@ This repo functions as a showcase of the [Minimalist](https://github.com/UI-Love
 ## [Adaptive Dashboard](https://ui-lovelace-minimalist.github.io/UI/setup/adaptive_dash/)
 
 This dashboard is designed to view on all sort of devices.
- <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mockups/light_mode.png" width="600"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mockups/dark_mode.png" width="600">
+ <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mockups/light%20mode.png" width="600"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mockups/dark%20mode.png" width="600">
  
 ## File system
 
