@@ -11,6 +11,22 @@ This repo functions as a showcase of the [Minimalist](https://github.com/UI-Love
 This dashboard is designed to view on all sort of devices.
  <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mockups/light%20mode.png" width="600"> <img src="https://raw.githubusercontent.com/basbruss/Minimalist-Dashboards/main/git_assets/mockups/dark%20mode.png" width="600">
  
+
+## Resources
+This dashboard is made with the Adaptive Dashboard provided by [UI-Minimalist](https://ui-lovelace-minimalist.github.io). It uses the custom Frontend Plugins from HACS recommended by Minimalist and some additions.
+| Resources used                            |
+|-------------------------------------------------------------------------|
+| [`browser-mod`](https://github.com/thomasloven/hass-browser_mod)        |
+| [`button-card`](https://github.com/custom-cards/button-card)            |
+| [`lovelace-card-mod`](https://github.com/thomasloven/lovelace-card-mod) |
+| [`mini-graph-card`](https://github.com/kalkih/mini-graph-card)          |
+| [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
+| [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
+| [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
+| [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)            |
+| [`state-switch`](https://github.com/thomasloven/lovelace-state-switch) |
+| [`swiper-card`](https://github.com/bramkragten/swipe-card)|
+
 ## File system
 
 I am using a so called "split config". This allows me to put each tab in it's own YAML-file. And it allows me to re-use parts which are included in multiple tabs without copying large amounts of code. 
