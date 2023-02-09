@@ -1,0 +1,234 @@
+room_card:
+  template:
+    - "icon_more_info_new"
+    - "ulm_translation_engine"
+  variables:
+    #count_sensor: "[[[ return variables.count_sensor ]]]"
+    ulm_room_icon: mdi:home
+    ulm_room_name: naam
+    ulm_room_label: ""
+    entity_1:
+      entity_id: ""
+    entity_2:
+      entity_id: ""
+    entity_3:
+      entity_id: ""
+    entity_4:
+      entity_id: ""
+  show_icon: false
+  show_name: false
+  show_label: false
+  state:
+    - value: "on"
+      styles:
+        card:
+          - background-color: >-
+              [[[
+                var color = entity.attributes.rgb_color;
+                if(hass.themes.darkMode){
+                  if (color){
+                    return 'rgba(' + color + ',0.1)'
+                  } else {
+                    return 'rgba(var(--color-yellow-text),0.1)'
+                  }
+                }
+                return 'rgba(var(--color-background-yellow),var(--opacity-bg)';
+              ]]]
+  styles:
+    card:
+      - border-radius: "var(--border-radius)"
+      - box-shadow: "var(--box-shadow)"
+      - padding: "12px"
+    grid:
+      - grid-template-areas: "'item1' 'item2'"
+      - grid-template-rows: "'1fr' '1fr'"
+      - row-gap: "6px"
+  custom_fields:
+    item1:
+      card:
+        type: "custom:button-card"
+        styles:
+          card:
+            - background: "none"
+        custom_fields:
+          item1:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              icon: "[[[ return variables.ulm_room_icon ]]]"
+              styles:
+                card:
+                  - background: "none"
+              state:
+                - value: "on"
+                  styles:
+                    icon:
+                      - color: >
+                          [[[
+                            var color = entity.attributes.rgb_color;
+                              if (color){
+                                return 'rgba(' + color + ',1)'
+                              }
+                              else{
+                                return 'rgba(var(--color-yellow),1)'
+                              } 
+                          ]]]
+                    img_cell:
+                      - background-color: >
+                          [[[
+                            var color = entity.attributes.rgb_color;
+                              if (color){
+                                return 'rgba(' + color + ',0.2)'
+                              }
+                              else{
+                                return 'rgba(var(--color-yellow),0.2)'
+                              } 
+                          ]]]
+          item2:
+            card:
+              type: "custom:button-card"
+              entity: "[[[ return entity.entity_id ]]]"
+              name: "[[[ return variables.ulm_room_name ]]]"
+              styles:
+                card:
+                  - background: "none"
+              label: >
+                [[[
+                  if (variables.ulm_count_sensor){
+                    if (entity.state == 'on'){
+                        if (states[variables.ulm_count_sensor].state != '1'){
+                          return states[variables.ulm_count_sensor].state + ' lampen aan';
+                        } else if (states[variables.ulm_count_sensor].state == '1'){
+                          return states[variables.ulm_count_sensor].state + ' lamp aan';
+                        }
+                    } else {
+                      return 'Lampen uit'
+                    }
+                  }
+                  return variables.ulm_room_label;
+                ]]]
+    item2:
+      card:
+        type: "custom:button-card"
+        variables:
+          item_count_engine: >
+            [[[
+              var pills = []
+              const entities = [variables.entity_1.entity_id, variables.entity_2.entity_id, variables.entity_3.entity_id, variables.entity_4.entity_id]
+              function entity_check(item) {
+                if (item != "") {
+                    pills.push("item" + (pills.length+1))
+                }
+              }
+              entities.forEach(entity_check)
+              return  pills.length 
+            ]]]
+        hold_action:
+          action: "navigate"
+          navigation_path: >
+            [[[ 
+              return variables.ulm_name; 
+            ]]]
+        styles:
+          grid:
+            - grid-template-areas: "'item1 item2' 'item3 item4'"
+            - grid-template-rows: min-content
+            - grid-template-columns: "1fr 1fr"
+            - align-items: "start"
+          card:
+            - box-shadow: none
+            - margin-left: 12px
+            - border-radius: 0px
+            - padding: 0px
+            - background-color: "rgba(0,0,0,0)"
+            - height: "48px"
+            - overflow: "visible"
+            - background: "none"
+          item1:
+            - display: "[[[ return (variables.item_count_engine >= 1) ? 'block' : 'none' ]]]"
+          item2:
+            - display: "[[[ return (variables.item_count_engine >= 2) ? 'block' : 'none' ]]]"
+          item3:
+            - display: "[[[ return (variables.item_count_engine >= 3) ? 'block' : 'none' ]]]"
+          item4:
+            - display: "[[[ return (variables.item_count_engine >= 4) ? 'block' : 'none' ]]]"
+        custom_fields:
+          item1:
+            card:
+              type: custom:button-card
+              template: sensor_generic
+              variables: "[[[ return variables.entity_1; ]]]"
+              entity: "[[[ return variables.entity_1.entity_id; ]]]"
+              icon: "[[[ return variables.entity_1.icon; ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return variables.entity_1.color; ]]]"
+                label:
+                  - color: "[[[ return variables.entity_1.color; ]]]"
+          item2:
+            card:
+              type: custom:button-card
+              template: sensor_generic
+              variables: "[[[ return variables.entity_2; ]]]"
+              entity: "[[[ return variables.entity_2.entity_id; ]]]"
+              icon: "[[[ return variables.entity_2.icon; ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return variables.entity_2.color; ]]]"
+                label:
+                  - color: "[[[ return variables.entity_2.color; ]]]"
+          item3:
+            card:
+              type: custom:button-card
+              template: sensor_generic
+              variables: "[[[ return variables.entity_3; ]]]"
+              entity: "[[[ return variables.entity_3.entity_id; ]]]"
+              icon: "[[[ return variables.entity_3.icon; ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return variables.entity_3.color; ]]]"
+                label:
+                  - color: "[[[ return variables.entity_3.color; ]]]"
+          item4:
+            card:
+              type: custom:button-card
+              template: sensor_generic
+              variables: "[[[ return variables.entity_4; ]]]"
+              entity: "[[[ return variables.entity_4.entity_id; ]]]"
+              icon: "[[[ return variables.entity_4.icon; ]]]"
+              styles:
+                icon:
+                  - color: "[[[ return variables.entity_4.color; ]]]"
+                label:
+                  - color: "[[[ return variables.entity_4.color; ]]]"
+sensor_generic:
+  show_icon: true
+  show_label: true
+  show_name: false
+  template:
+    - "ulm_translation_engine"
+  label: "[[[ return variables?.label ? variables?.label : variables.ulm_translation_state_unit; ]]]"
+  styles:
+    grid:
+      - grid-template-areas: '"i l"'
+      - grid-template-columns: min-content min-content
+      - grid-template-rows: min-content
+    img_cell:
+      - place-self: center
+      - width: 20px
+      - height: 20px
+    icon:
+      - overflow: "visible"
+    label:
+      - justify-self: start
+      - align-self: center
+      - font-weight: bolder
+      - font-size: 12px
+      - margin-left: 0px
+    card:
+      - box-shadow: none
+      - padding: 2px
+      - background-color: "rgba(0,0,0,0)"
+  tap_action:
+    action: more-info
+  size: 20px

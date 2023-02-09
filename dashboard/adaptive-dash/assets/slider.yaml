@@ -1,0 +1,46 @@
+---
+type: "custom:state-switch"
+view_layout:
+  grid-area: "card0"
+  show:
+    mediaquery: "(min-width: 800px)"
+entity: input_select.adaptive_slider
+default: "default"
+transition: "slide-right"
+transition_time: 500
+states:
+  Kamers:
+    type: custom:swipe-card
+    parameters:
+      slidesPerView: 3
+      spaceBetween: 6
+    cards: !include domains/rooms.yaml
+
+  Mediaplayers:
+    type: custom:swipe-card
+    parameters:
+      slidesPerView: 3
+      spaceBetween: 6
+    cards: !include domains/mediaplayer.yaml
+
+  Thermostaat:
+    type: custom:swipe-card
+    parameters:
+      slidesPerView: 3
+      spaceBetween: 6
+    cards: !include domains/climate.yaml
+
+  Robot:
+    type: horizontal-stack
+    cards: !include domains/vacuum.yaml
+
+  Raam:
+    type: horizontal-stack
+    cards: !include domains/cover.yaml
+
+  Energie:
+    type: custom:swipe-card
+    parameters:
+      slidesPerView: 3
+      spaceBetween: 6
+    cards: !include domains/energy.yaml

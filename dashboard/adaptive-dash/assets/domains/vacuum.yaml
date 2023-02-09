@@ -1,0 +1,12 @@
+- type: "custom:button-card"
+  template:
+    - "card_vacuum"
+    - "battery_info"
+    - swiper-margin
+  entity: vacuum.mova_l600
+  variables:
+    ulm_card_vacuum_enable_popup: true
+    ulm_card_vacuum_camera: camera.mova_l600_map
+    ulm_card_vacuum_camera_toggle: true
+    ulm_input_select: input_select.adaptive_dashboard
+    ulm_input_select_option: vacuum

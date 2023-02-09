@@ -1,0 +1,195 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  # Tablet portrait
+  grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
+  grid-template-areas: |
+    "text text text weather weather weather"
+    "welcome welcome welcome welcome welcome welcome"
+    "person person person person person person"
+    "title1 title1 title1 title1 title1 title1"
+    "card0 card0 card0 card0 card0 card0 "
+    "chip chip  chip chip chip chip"
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "welcome welcome"
+        "person person"
+        "title1 title1"
+        "card0 card0"
+        "chip chip"
+        "title2 title2"
+        "card1 card2"
+        "card3 card3"
+view_layout:
+  grid-area: "main"
+cards:
+  - view_layout:
+      grid-area: "text"
+      show:
+        mediaquery: "(min-width: 800px)"
+    type: custom:button-card
+    template:
+      - card_title
+      - welcome_info
+
+  - view_layout:
+      grid-area: "person"
+    type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: card_person
+        entity: !secret bas
+        variables:
+          ulm_card_person_entity: !secret bas
+          ulm_card_person_use_entity_picture: true
+          ulm_card_person_battery: sensor.iphone_van_bas_battery_level
+          ulm_card_person_eta: sensor.waze_travel_time_bas
+      - type: custom:button-card
+        template: card_person
+        entity: !secret angelique
+        variables:
+          ulm_card_person_entity: !secret angelique
+          ulm_card_person_use_entity_picture: true
+          ulm_card_person_battery: sensor.iphone_2_battery_level
+          #ulm_card_person_eta: sensor.waze_travel_time_person
+
+  - view_layout:
+      grid-area: weather
+      show:
+        mediaquery: "(min-width: 800px)"
+    type: "custom:button-card"
+    template:
+      - custom_card_weather
+      - ulm_actions_card_overlay
+    variables:
+      ulm_custom_card_irmajavi_weather: weather.buienradar
+      ulm_custom_card_irmajavi_weather_entity_1: sensor.buienradar_wind_speed
+      ulm_custom_card_irmajavi_weather_entity_2: sensor.buienradar_precipitation
+      ulm_custom_card_irmajavi_weather_entity_3: sensor.buienradar_pressure
+      ulm_custom_card_irmajavi_weather_entity_4: sensor.buienradar_humidity
+      ulm_custom_card_irmajavi_weather_name_1: Wind
+      ulm_custom_card_irmajavi_weather_name_2: Neerslag
+      ulm_custom_card_irmajavi_weather_name_3: Luchtdruk
+      ulm_custom_card_irmajavi_weather_name_4: Luchtvochtigheid
+      ulm_custom_card_irmajavi_weather_temperature_outside: sensor.buienradar_temperature
+      ulm_input_select: input_select.adaptive_dashboard
+      ulm_input_select_option: weather
+      ulm_custom_popup:
+        template: "popup_weather_forecast"
+        entity: weather.buienradar
+        popup_variables:
+          ulm_weather_popup_surpress_first_forecast: false
+
+  - &welcome
+    view_layout:
+      grid-area: "welcome"
+      show:
+        mediaquery: "(min-width: 800px)"
+    type: "custom:button-card"
+    template: "card_scenes_welcome"
+    variables: &var_welcome
+      entity_1:
+        entity_id: sensor.balkon_raam_power
+        nav_path: Lights
+        icon: "mdi:lightbulb-group" #OPTIONAL
+        name: "Lampen" #OPTIONAL
+        color: "blue"
+        ulm_input_select_option: lights
+        ulm_input_select: input_select.adaptive_dashboard
+      entity_2:
+        entity_id: "input_boolean.nacht_modus"
+        name: "Nacht" #OPTIONAL
+        color: "red"
+      entity_3:
+        entity_id: input_boolean.away_mode
+        name: "[[[ return states['input_boolean.away_mode'].state == 'off' ? 'Thuis' : 'Afwezig']]]" #OPTIONAL
+        icon: "[[[ return states['input_boolean.away_mode'].state == 'off' ? 'mdi:home-outline' : 'mdi:home-off-outline']]]"
+        color: "green"
+      entity_4:
+        entity_id: input_boolean.film_mode
+        name: "Film" #OPTIONAL
+        color: "purple"
+      #entity_5:
+      #  entity_id: "<YOUR_ENTITY>"
+      #  icon: "mdi:YOUR_ICON" #OPTIONAL
+      #  name: "YOUR_NAME" #OPTIONAL
+      #  color: "yellow"
+      #entity_6:
+      #  entity_id: "<YOUR_ENTITY>"
+      #  icon: "mdi:YOUR_ICON" #OPTIONAL
+      #  name: "YOUR_NAME" #OPTIONAL
+      #  color: "pink"
+      #entity_7:
+      #  entity_id: "<YOUR_ENTITY>"
+      #  icon: "mdi:YOUR_ICON" #OPTIONAL
+      #  name: "YOUR_NAME" #OPTIONAL
+      #  color: "yellow"
+  - <<: *welcome
+    view_layout:
+      grid-area: "welcome"
+      show:
+        mediaquery: "(max-width: 800px)"
+    triggers_update: input_boolean.collapse_card
+    template: "card_welcome_scenes"
+    variables:
+      <<: *var_welcome
+      ulm_weather: weather.buienradar
+      ulm_card_welcome_scenes_collapse: input_boolean.collapse_card
+
+  - view_layout:
+      grid-area: "title1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Favorieten"
+
+  - !include ../assets/slider.yaml
+  - !include ../assets/slider_mobile.yaml
+
+  - view_layout:
+      grid-area: "chip"
+    type: custom:swipe-card
+    parameters:
+      spaceBetween: 6
+    cards:
+      - &chip
+        type: "custom:button-card"
+        template: "chip_icon_label"
+        icon: mdi:home-city-outline
+        label: "[[[ return variables.option ]]]"
+        triggers_update: "all"
+        variables:
+          option: "Kamers"
+        styles:
+          card:
+            - margin-bottom: "4px"
+            - background-color: "[[[ return states['input_select.adaptive_slider'].state == variables.option ? 'rgba(var(--color-theme),0.2)' : 'var(--card-background-color)'; ]]]"
+        tap_action:
+          action: "call-service"
+          service: input_select.select_option
+          service_data:
+            entity_id: input_select.adaptive_slider
+            option: "[[[ return variables.option ]]]"
+      - <<: *chip
+        icon: mdi:television-speaker
+        variables:
+          option: "Mediaplayers"
+      - <<: *chip
+        icon: mdi:home-thermometer-outline
+        variables:
+          option: "Thermostaat"
+      - <<: *chip
+        icon: mdi:vacuum
+        variables:
+          option: "Robot"
+      - <<: *chip
+        icon: mdi:window-shutter-open
+        variables:
+          option: "Raam"
+      - <<: *chip
+        icon: mdi:flash
+        variables:
+          option: "Energie"

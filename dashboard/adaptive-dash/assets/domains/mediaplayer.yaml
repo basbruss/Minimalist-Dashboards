@@ -1,0 +1,28 @@
+- &media_card
+  type: "custom:button-card"
+  template:
+    - "card_media_player"
+    - swiper-margin
+  entity: media_player.home_theater
+  variables: &var_media
+    ulm_card_media_player_enable_popup: true
+    ulm_card_media_player_enable_art: true
+    ulm_card_media_player_enable_controls: true
+    ulm_card_media_player_more_info: true
+    ulm_input_select: input_select.adaptive_dashboard
+    ulm_input_select_option: mediaplayer 1
+- <<: *media_card
+  entity: media_player.slaapkamer_heos
+  variables:
+    <<: *var_media
+    ulm_input_select_option: mediaplayer 2
+- <<: *media_card
+  entity: media_player.s95b
+  variables:
+    <<: *var_media
+    ulm_input_select_option: mediaplayer 3
+- <<: *media_card
+  entity: media_player.mi_box
+  variables:
+    <<: *var_media
+    ulm_input_select_option: mediaplayer 4

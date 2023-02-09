@@ -1,0 +1,84 @@
+- type: "custom:button-card"
+  template:
+    - room_card
+    - swiper-margin
+  entity: light.woonkamer
+  variables:
+    ulm_room_icon: "mdi:sofa-outline"
+    ulm_room_name: "Woonkamer"
+    entity_1:
+      entity_id: sensor.temperatuur_woonkamer
+      icon: mdi:thermometer
+      color: >
+        [[[
+          if (states['climate.woonkamer'].attributes.hvac_action == 'idle'){ return 'green';}
+          if (states['climate.woonkamer'].attributes.hvac_action == 'heating') {return 'rgb(var(--color-yellow))';}
+          else return 'grey';
+        ]]]
+    entity_2:
+      entity_id: cover.balkon_raam
+      icon: "[[[ return entity.state == 'closed' ? 'mdi:window-closed' : 'mdi:window-open']]]"
+
+- type: "custom:button-card"
+  template:
+    - room_card
+    - swiper-margin
+  entity: light.slaapkamer
+  variables:
+    ulm_room_icon: "mdi:bed-king-outline"
+    ulm_room_name: "Slaapkamer"
+    entity_1:
+      entity_id: sensor.temperatuur_slaapkamer
+      icon: mdi:thermometer
+      color: >
+        [[[
+          if (states['climate.slaapkamer'].attributes.hvac_action == 'idle'){ return 'green';}
+          if (states['climate.slaapkamer'].attributes.hvac_action == 'heating') {return 'rgb(var(--color-yellow))';}
+          else return 'grey';
+        ]]]
+    entity_2:
+      entity_id: cover.rolgordijn_slaapkamer
+      icon: "[[[ return entity.state == 'closed' ? 'mdi:roller-shade-closed' : 'mdi:roller-shade']]]"
+
+- type: "custom:button-card"
+  template:
+    - room_card
+    - swiper-margin
+  entity: light.kantoor
+  variables:
+    ulm_room_icon: "mdi:bed-outline"
+    ulm_room_name: "Kantoor"
+    entity_1:
+      entity_id: sensor.temperatuur_kantoor
+      icon: mdi:thermometer
+      color: >
+        [[[
+          if (states['climate.kantoor'].attributes.hvac_action == 'idle'){ return 'green';}
+          if (states['climate.kantoor'].attributes.hvac_action == 'heating') {return 'rgb(var(--color-yellow))';}
+          else return 'grey';
+        ]]]
+    entity_2:
+      entity_id: sensor.kantoor_humidity
+      icon: "mdi:water"
+      color: >
+        [[[
+          return entity.state > 69 ? 'red' : '#3393FF'
+        ]]]
+
+- type: "custom:button-card"
+  template:
+    - room_card
+    - swiper-margin
+  entity: sensor.temperatuur_badkamer
+  variables:
+    ulm_room_icon: "mdi:shower"
+    ulm_room_name: "Badkamer"
+    entity_1:
+      entity_id: sensor.temperatuur_badkamer
+      icon: mdi:thermometer
+      color: >
+        [[[
+          if (states['climate.badkamer'].attributes.hvac_action == 'idle'){ return 'green';}
+          if (states['climate.badkamer'].attributes.hvac_action == 'heating') {return 'rgb(var(--color-yellow))';}
+          else return 'grey';
+        ]]]

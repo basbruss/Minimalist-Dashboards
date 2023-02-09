@@ -1,0 +1,29 @@
+- &card_graph
+  type: "custom:button-card"
+  template:
+    - card_graph_energy
+    - swiper-margin
+  entity: sensor.accumulated_consumption_current_hour_brabander
+  variables: &var_graph
+    ulm_card_graph_entity: sensor.accumulated_consumption_current_hour_brabander
+    ulm_card_graph_type: bar
+    ulm_card_graph_group_by: hour
+    ulm_card_graph_color: orange
+    ulm_card_graph_points: 1
+    ulm_card_graph_name: Verbruik per uur
+    ulm_card_graph_func: max
+- <<: *card_graph
+  entity: sensor.electricity_price_brabander
+  variables:
+    <<: *var_graph
+    ulm_card_graph_entity: sensor.electricity_price_brabander
+    ulm_card_graph_color: blue
+    ulm_card_graph_name: Uurprijs Stroom
+- <<: *card_graph
+  entity: sensor.accumulated_consumption_brabander
+  variables:
+    <<: *var_graph
+    ulm_card_graph_entity: sensor.accumulated_consumption_brabander
+    ulm_card_graph_group_by: date
+    ulm_card_graph_name: Verbruik per dag
+    ulm_card_graph_hours: 168

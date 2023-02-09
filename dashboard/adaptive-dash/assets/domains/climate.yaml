@@ -1,0 +1,27 @@
+- &thermostaat
+  type: "custom:button-card"
+  template:
+    - card_thermostat
+    - swiper-margin
+  entity: climate.woonkamer
+  variables: &var_cli
+    ulm_card_thermostat_enable_popup: true
+    ulm_card_thermostat_enable_controls: true
+    ulm_card_thermostat_enable_display_temperature: true
+    ulm_input_select: input_select.adaptive_dashboard
+    ulm_input_select_option: climate 1
+- <<: *thermostaat
+  entity: climate.slaapkamer
+  variables:
+    <<: *var_cli
+    ulm_input_select_option: climate 2
+- <<: *thermostaat
+  entity: climate.badkamer
+  variables:
+    <<: *var_cli
+    ulm_input_select_option: climate 3
+- <<: *thermostaat
+  entity: climate.kantoor
+  variables:
+    <<: *var_cli
+    ulm_input_select_option: climate 4

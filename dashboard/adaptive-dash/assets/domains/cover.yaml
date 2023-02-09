@@ -1,0 +1,21 @@
+- &cover
+  type: "custom:button-card"
+  template:
+    - "card_cover"
+    - swiper-margin
+  entity: cover.balkon_raam
+  variables: &var_cover
+    ulm_card_cover_enable_popup: true
+    ulm_card_cover_enable_controls: true
+    ulm_input_select: input_select.adaptive_dashboard
+    ulm_input_select_option: cover 2
+- <<: *cover
+  template:
+    - "card_cover"
+    - swiper-margin
+    - "battery_info"
+  entity: cover.rolgordijn_slaapkamer
+  variables:
+    <<: *var_cover
+    ulm_battery_entity: sensor.rolgordijn_slaapkamer_battery
+    ulm_input_select_option: cover 1

@@ -1,0 +1,171 @@
+---
+type: "custom:state-switch"
+view_layout:
+  grid-area: "popup"
+  show:
+    # only show when screen-width is larger than 1100px
+    mediaquery: "(min-width: 1100px)"
+# add your input_select
+entity: input_select.adaptive_dashboard
+default: "default"
+transition: "slide-down"
+transition_time: 500
+# options set in the input_select
+states:
+  light 1: &popup_light
+    type: "custom:button-card"
+    template: "popup_light_brightness"
+    entity: light.hue_play_gradient_lightstrip
+  light 2:
+    <<: *popup_light
+    entity: light.hue_lightstrip
+  light 3:
+    <<: *popup_light
+    entity: light.hue_go_links
+  light 4:
+    <<: *popup_light
+    entity: light.hue_play
+  light 5:
+    <<: *popup_light
+    entity: light.hue_go_rechts
+  light 6:
+    <<: *popup_light
+    entity: light.wled_soundreactive
+  light 7:
+    <<: *popup_light
+    entity: light.keuken_spots
+  light 8:
+    <<: *popup_light
+    entity: light.eetkamer_lamp_light
+  light 9:
+    <<: *popup_light
+    entity: light.hue_ambiance_ceiling_1
+  light 10:
+    <<: *popup_light
+    entity: light.gang
+  light 11:
+    <<: *popup_light
+    entity: light.toilet
+  light 12:
+    <<: *popup_light
+    entity: light.kantoor
+
+  vacuum:
+    type: "custom:button-card"
+    template: "popup_vacuum_map"
+    entity: vacuum.mova_l600
+    variables:
+      ulm_card_vacuum_camera: camera.mova_l600_map
+
+  weather:
+    type: "custom:button-card"
+    template: popup_weather_forecast
+    entity: weather.buienradar
+
+  cover 1:
+    type: "custom:button-card"
+    template: popup_cover
+    entity: cover.rolgordijn_slaapkamer
+  cover 2:
+    type: "custom:button-card"
+    template: popup_cover
+    entity: cover.balkon_raam
+
+  ###  Mediaplayers
+  mediaplayer 1: &mediaplayer
+    type: "custom:button-card"
+    template: "popup_media_player_infos"
+    entity: media_player.home_theater
+  mediaplayer 2:
+    <<: *mediaplayer
+    entity: media_player.slaapkamer_heos
+  mediaplayer 3:
+    <<: *mediaplayer
+    entity: media_player.s95b
+  mediaplayer 4:
+    <<: *mediaplayer
+    entity: media_player.mi_box
+  # mediaplayer 2:
+  #   type: "custom:button-card"
+  #   template: "popup_media_player_infos"
+  #   entity: <your_entity>
+  # mediaplayer 3:
+  #   type: "custom:button-card"
+  #   template: "popup_media_player_infos"
+  #   entity: <your_entity>
+  # mediaplayer 4:
+  #   type: "custom:button-card"
+  #   template: "popup_media_player_infos"
+  #   entity: <your_entity>
+  # mediaplayer 5:
+  #   type: "custom:button-card"
+  #   template: "popup_media_player_infos"
+  #   entity: <your_entity>
+  #
+  ### Thermostats
+  climate 1: &climate
+    type: "custom:button-card"
+    template: "popup_thermostat_temperature"
+    entity: climate.woonkamer
+  climate 2:
+    <<: *climate
+    entity: climate.slaapkamer
+  climate 3:
+    <<: *climate
+    entity: climate.badkamer
+  climate 4:
+    <<: *climate
+    entity: climate.kantoor
+  # climate 5:
+  #   type: "custom:button-card"
+  #   template: "popup_thermostat_temperature"
+  #   entity: <your_entity>
+  #
+  ### Power
+  # power 1:
+  #   type: "custom:button-card"
+  #   template: "popup_power_outlet_stats"
+  #   entity: <your_entity>
+  #   variables:
+  #     ulm_popup_power_outlet_sensor1:
+  #     ulm_popup_power_outlet_sensor2:
+  #     ulm_popup_power_outlet_graph_sensor:
+  # power 2:
+  #   type: "custom:button-card"
+  #   template: "popup_power_outlet_stats"
+  #   entity: <your_entity>
+  #   variables:
+  #     ulm_popup_power_outlet_sensor1:
+  #     ulm_popup_power_outlet_sensor2:
+  #     ulm_popup_power_outlet_graph_sensor:
+  # power 3:
+  #   type: "custom:button-card"
+  #   template: "popup_power_outlet_stats"
+  #   entity: <your_entity>
+  #   variables:
+  #     ulm_popup_power_outlet_sensor1:
+  #     ulm_popup_power_outlet_sensor2:
+  #     ulm_popup_power_outlet_graph_sensor:
+  # power 4:
+  #   type: "custom:button-card"
+  #   template: "popup_power_outlet_stats"
+  #   entity: <your_entity>
+  #   variables:
+  #     ulm_popup_power_outlet_sensor1:
+  #     ulm_popup_power_outlet_sensor2:
+  #     ulm_popup_power_outlet_graph_sensor:
+  # power 5:
+  #   type: "custom:button-card"
+  #   template: "popup_power_outlet_stats"
+  #   entity: <your_entity>
+  #   variables:
+  #     ulm_popup_power_outlet_sensor1:
+  #     ulm_popup_power_outlet_sensor2:
+  #     ulm_popup_power_outlet_graph_sensor:
+  lights: !include "../views/lights.yaml"
+  ## Rooms
+  livingroom: !include "../views/livingroom.yaml"
+  # bedroom: !include "../views/bedroom.yaml"
+  # bathroom: !include "../views/bathroom.yaml"
+  # garage: !include "../views/garage.yaml"
+  # lights: !include "../views/lights.yaml"

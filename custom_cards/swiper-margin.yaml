@@ -1,0 +1,4 @@
+swiper-margin:
+  styles:
+    card:
+      - margin-bottom: "4px"

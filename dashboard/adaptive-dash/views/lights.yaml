@@ -1,0 +1,160 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  grid-template-rows: "min-content"
+  grid-template-columns: "1fr 1fr 1fr"
+  grid-template-areas: >
+    "title1 title1 title1"
+    "card1 card2 card3"
+    "card4 card5 card6"
+    "title2 title3 title4"
+    "card7 card8  card9"
+    "title7 title6 title5"
+    "card12 card11 card10"
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "title1 title1"
+        "card1 card2"
+        "card3 card4"
+        "card5 card6"
+        "title2 title3"
+        "card7 card8"
+        "title4 title7"
+        "card9 card12"
+        "title6 title5"
+        "card11 card10"
+view_layout:
+  grid-area: "lights"
+cards:
+  - &title
+    view_layout:
+      grid-area: "title1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Woonkamer"
+
+  - &light_card
+    view_layout:
+      grid-area: "card1"
+    entity: light.hue_play_gradient_lightstrip
+    type: "custom:button-card"
+    template: "card_light"
+    variables: &light_var
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select: input_select.adaptive_dashboard
+      ulm_input_select_option: light 1
+
+  - <<: *light_card
+    entity: light.hue_lightstrip
+    view_layout:
+      grid-area: "card2"
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 2
+  - <<: *light_card
+    view_layout:
+      grid-area: "card3"
+    entity: light.hue_go_links
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 3
+  - <<: *light_card
+    view_layout:
+      grid-area: "card4"
+    entity: light.hue_play
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 4
+  - <<: *light_card
+    view_layout:
+      grid-area: "card5"
+    entity: light.hue_go_rechts
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 5
+  - <<: *light_card
+    view_layout:
+      grid-area: "card6"
+    entity: light.wled_soundreactive
+    variables:
+      ulm_card_light_color_palette: select.wled_soundreactive_color_palette
+      <<: *light_var
+      ulm_input_select_option: light 6
+
+  - <<: *title
+    view_layout:
+      grid-area: "title2"
+    name: "Keuken"
+  - <<: *light_card
+    view_layout:
+      grid-area: "card7"
+    entity: light.keuken_spots
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 7
+
+  - <<: *title
+    view_layout:
+      grid-area: "title3"
+    name: "Eetkamer"
+  - <<: *light_card
+    view_layout:
+      grid-area: "card8"
+    entity: light.eetkamer
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 8
+
+  - <<: *title
+    view_layout:
+      grid-area: "title4"
+    name: "Slaapkamer"
+  - <<: *light_card
+    view_layout:
+      grid-area: "card9"
+    entity: light.hue_ambiance_ceiling_1
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 9
+
+  - <<: *title
+    view_layout:
+      grid-area: "title5"
+    name: "Gang"
+  - <<: *light_card
+    view_layout:
+      grid-area: "card10"
+    entity: light.gang
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 10
+
+  - <<: *title
+    view_layout:
+      grid-area: "title6"
+    name: "Toilet"
+  - <<: *light_card
+    view_layout:
+      grid-area: "card11"
+    entity: light.toilet
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 11
+
+  - <<: *title
+    view_layout:
+      grid-area: "title7"
+    name: "Kantoor"
+  - <<: *light_card
+    view_layout:
+      grid-area: "card12"
+    entity: light.kantoor
+    variables:
+      <<: *light_var
+      ulm_input_select_option: light 12

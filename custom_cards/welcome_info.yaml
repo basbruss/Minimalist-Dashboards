@@ -1,0 +1,55 @@
+welcome_info:
+  template: ulm_language_variables
+  trigger_updates: "all"
+  styles:
+    label:
+      - text-align: left
+      - white-space: "initial"
+      - text-overflow: "initial"
+      - overflow: "initial"
+  name: |
+    [[[
+      var today = new Date();
+      var time = today.getHours()
+      let welcome = '';
+      if (time >= '18'){
+        welcome = variables.ulm_evening;
+      } else if (time >= '12'){
+        welcome = variables.ulm_afternoon;
+      } else if (time >= '5'){
+        welcome = variables.ulm_morning;
+      } else {
+        welcome = variables.ulm_hello;
+      }
+      return welcome + ', ' + user.name + '!';
+    ]]]
+  label: |
+    [[[
+      let n_lights = states['sensor.alle_lampen_count'].state
+      let e_lights = states['sensor.lampen_vermogen'].state + states['sensor.lampen_vermogen'].attributes.unit_of_measurement
+      let lights = 'Alle lampen staan uit'
+      if (parseFloat(n_lights) > 0) {
+        lights = 'Er staan ' + n_lights + ' lampen aan, met een verbruik van ' + e_lights
+      } 
+      if (parseFloat(n_lights) == 1){
+        lights = 'Er staat ' + n_lights + ' lamp aan, met een verbruik van ' + e_lights;
+      }
+      let n_climate = states['sensor.verwarming_count'].state
+      let r_climate = states['sensor.verwarming_count'].attributes.kamers
+      let climate = 'De verwarming staat uit'
+      if (parseFloat(n_climate) > 0){
+        climate = 'De verwarming staat in ' + n_climate + ' ruimtes aan'
+      }
+      if (parseFloat(n_climate) == 1){
+        climate = 'De verwarming in ' + (r_climate == 'Kantoor'?'het ':'de ') + r_climate + ' staat aan'
+      }
+      let rain = states['sensor.buienradar_precipitation'].state + states['sensor.buienradar_precipitation'].attributes.unit_of_measurement
+      let rain_1d =states['sensor.buienradar_rain_1d'].state + states['sensor.buienradar_rain_1d'].attributes.unit_of_measurement
+      let weather = 'Het is vandaag ' + states['sensor.buienradar_symbol'].state.toLowerCase() + ' en het gaat '
+        + (states['sensor.buienradar_precipitation'].state != '0.0' ?  rain : 'niet') + ' regenen' + '<br>' +
+        'Morgen wordt het ' + states['sensor.buienradar_symbol_1d'].state.toLowerCase() + ' en gaat het ' + 
+        (states['sensor.buienradar_rain_1d'].state != '0.0' ?  rain_1d : 'niet') + ' regenen'
+
+      
+      return lights + ' <br> ' + climate + ' <br> ' + weather
+    ]]]

@@ -1,0 +1,36 @@
+card_graph_energy:
+  template: card_graph
+  custom_fields:
+    item2:
+      card:
+        type: "custom:mini-graph-card"
+        entities: >
+          [[[
+            var ent = [];
+            var dict = {
+              'entity':variables.ulm_card_graph_entity,
+              'aggregate_func':variables.ulm_card_graph_func,
+              }
+            ent.push(dict);
+            return ent;
+          ]]]
+        show:
+          name: false
+          icon: false
+          legend: false
+          state: false
+          graph: "[[[ return variables.ulm_card_graph_type=='fill'?'line':variables.ulm_card_graph_type; ]]]"
+          fill: "[[[ return variables.ulm_card_graph_type=='fill'?true:false; ]]]"
+        hours_to_show: "[[[ return variables.ulm_card_graph_hours; ]]]"
+        points_per_hour: "[[[ return variables.ulm_card_graph_points; ]]]"
+        group_by: "[[[ return variables.ulm_card_graph_group_by; ]]]"
+        hour24: true
+        style: |
+          ha-card {
+            box-shadow: none;
+            border-radius: var(--border-radius);
+            padding-bottom: 0 !important
+          }
+          ha-card div {
+            padding: 0 !important
+          }
