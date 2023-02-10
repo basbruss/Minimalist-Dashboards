@@ -13,7 +13,8 @@ This dashboard is designed to view on all sort of devices.
  
 
 ## Resources
-This dashboard is made with the Adaptive Dashboard provided by [UI-Minimalist](https://ui-lovelace-minimalist.github.io). It uses the custom Frontend Plugins from HACS recommended by Minimalist and some additions.
+This dashboard is made with the Adaptive Dashboard provided by [UI-Minimalist](https://ui-lovelace-minimalist.github.io). It uses the custom Frontend Plugins from HACS recommended by Minimalist and some additions. See more detailed info the wiki page from Minimalist.
+
 | Resources used                            |
 |-------------------------------------------------------------------------|
 | [`browser-mod`](https://github.com/thomasloven/hass-browser_mod)        |
