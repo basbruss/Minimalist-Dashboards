@@ -23,7 +23,8 @@ This dashboard is made with the Adaptive Dashboard provided by [UI-Minimalist](h
 | [`mini-media-player`](https://github.com/kalkih/mini-media-player)      |
 | [`my-cards-slider-card`](https://github.com/AnthonMS/my-cards)          |
 | [`light-entity-card`](https://github.com/ljmerza/light-entity-card)     |
-| [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)            |
+| [`layout-card`](https://github.com/thomasloven/lovelace-layout-card)    |
+| [`weather-radar-card`](https://github.com/Makin-Things/weather-radar-card)    |
 | [`state-switch`](https://github.com/thomasloven/lovelace-state-switch) |
 | [`swiper-card`](https://github.com/bramkragten/swipe-card)|
 
